@@ -4,7 +4,7 @@ import "./globals.css";
 import "./academic.css";
 
 export const metadata: Metadata = {
-  title: { default: "Your Name — Scientific Computing & Software", template: "%s | Your Name" },
+  title: { default: "Yingyou Ma — Scientific Computing & Software", template: "%s | Yingyou Ma" },
   description: "Selected engineering software projects in scientific computing, data analysis, and 3D visualization."
 };
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <SiteHeader />
           <main>{children}</main>
-          <footer className="site-footer"><span>© {new Date().getFullYear()} Your Name</span><span>Scientific computing and software</span></footer>
+          <footer className="site-footer"><span>© {new Date().getFullYear()} Yingyou Ma</span><span>Scientific computing and software</span></footer>
         </div>
       </body>
     </html>
