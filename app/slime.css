@@ -125,6 +125,14 @@
 @media(max-width:650px){.slime-showcase{padding:28px 24px 70px}.slime-hero{padding:48px 0 55px;gap:30px}.slime-hero h1{font-size:76px}.slime-hero-art .visual-large{height:260px;min-height:0}.slime-section{padding:55px 0}.slime-section-layout,.slime-examples,.slime-metrics{grid-template-columns:1fr;gap:20px}.slime-capabilities{grid-template-columns:1fr 1fr;gap:18px}.slime-capability h3{font-size:23px}.slime-case-figure{height:205px}}
 
 /* Cool Scientific — scoped to SLIME; other portfolio pages retain their palette. */
+.slime-underwater-light{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 65% -12%,rgba(108,201,238,.26),transparent 60%),linear-gradient(180deg,rgba(193,233,249,.22),transparent 75%);mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.8) 68%,transparent 100%)}
+.slime-underwater-light svg{display:block;width:110%;height:110%;margin:-5%;opacity:.52;mix-blend-mode:screen;animation:slime-caustic-drift 13s ease-in-out infinite alternate}
+.slime-underwater-bubbles{position:fixed;inset:0;z-index:90;pointer-events:none}
+.slime-showcase{position:relative;isolation:isolate}
+.slime-showcase>.slime-underwater-light{z-index:0}
+.slime-showcase>.slime-hero,.slime-showcase>.slime-section,.slime-showcase>.detail-next{position:relative;z-index:1}
+@keyframes slime-caustic-drift{from{transform:translate(-2%,-1%) scale(1)}to{transform:translate(2%,2%) scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.slime-underwater-light svg{animation:none}.slime-underwater-bubbles{display:none}}
 body:has(.slime-showcase){background:#f7f9fc;color:#1e3042;--line:#dce7f0;--cyan:#347da7;color-scheme:light}
 body:has(.slime-showcase) .site-header{background:#f7f9fc;border-bottom-color:#dce7f0;color:#1e3042}
 body:has(.slime-showcase) .site-header nav{color:#52677a}

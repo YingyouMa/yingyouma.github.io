@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SlimeScrollProgress } from "./slime-scroll-progress";
 import { SlimeScrollReveal } from "./slime-scroll-reveal";
 import { SlimeSpotlightCards } from "./slime-spotlight-cards";
+import { SlimeUnderwater } from "./slime-underwater";
 import slimeOverview from "../figures/SLIME/slime_overview.png";
 import slimeMethod from "../figures/SLIME/slime_method.png";
 import "../app/slime.css";
@@ -59,6 +60,7 @@ function CaseFigure({ kind }: { kind: string }) {
 
 export function SlimeShowcase() {
   return <article className="slime-showcase">
+    <SlimeUnderwater />
     <SlimeScrollReveal />
     <SlimeSpotlightCards />
     <SlimeScrollProgress sections={showcaseSections} />

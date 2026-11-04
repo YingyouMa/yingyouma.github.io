@@ -9,6 +9,7 @@ import kokkosFigure from "../../../../figures/SLIME/Kokkos.png";
 import { SlimeScrollProgress } from "../../../../components/slime-scroll-progress";
 import { SlimeScrollReveal } from "../../../../components/slime-scroll-reveal";
 import { SlimeLightbox } from "../../../../components/slime-lightbox";
+import { SlimeUnderwater } from "../../../../components/slime-underwater";
 import "../../../slime.css";
 
 const sections = [
@@ -40,6 +41,7 @@ const lightboxFigures = [
 
 export default function SlimeMethodsPage() {
   return <article className="slime-showcase slime-methods-page">
+    <SlimeUnderwater />
     <SlimeScrollReveal />
     <SlimeLightbox figures={lightboxFigures} />
     <SlimeScrollProgress sections={methodNavigation} />
