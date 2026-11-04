@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SlimeScrollProgress } from "./slime-scroll-progress";
 import { SlimeScrollReveal } from "./slime-scroll-reveal";
+import { SlimeSpotlightCards } from "./slime-spotlight-cards";
 import slimeOverview from "../figures/SLIME/slime_overview.png";
 import slimeMethod from "../figures/SLIME/slime_method.png";
 import "../app/slime.css";
@@ -59,6 +60,7 @@ function CaseFigure({ kind }: { kind: string }) {
 export function SlimeShowcase() {
   return <article className="slime-showcase">
     <SlimeScrollReveal />
+    <SlimeSpotlightCards />
     <SlimeScrollProgress sections={showcaseSections} />
     <a className="back-link" href="/projects">← All projects</a>
     <header className="slime-hero">
@@ -73,23 +75,23 @@ export function SlimeShowcase() {
       <div className="slime-hero-art"><ProjectVisual kind="flow" large /></div>
     </header>
 
-    <section className="slime-section slime-overview" id="slime-overview">
+    <section className="slime-section slime-overview slime-numbered-section" id="slime-overview" data-section-number="01">
       <p className="eyebrow slime-reveal">01 / OVERVIEW</p>
       <div className="slime-section-layout"><h2 className="slime-reveal">Combining efficient computation with flexible boundaries.</h2><div className="slime-reveal"><p>Simulating highly viscous fluids presents a practical trade-off. Some conventional methods can solve steady flow efficiently but require more elaborate treatment of complex or moving solid boundaries. Other methods handle such boundaries naturally, yet can become computationally expensive when they must simulate the rapid relaxation of a highly viscous fluid.</p><p>SLIME brings these strengths together. It uses the lattice Boltzmann method to handle complicated boundaries and a GPU-accelerated multigrid solver to compute steady Stokes flow directly, without spending time simulating the transient relaxation.</p></div></div>
       <figure className="slime-overview-figure slime-reveal slime-reveal-image"><Image src={slimeOverview} alt="Overview illustration of the SLIME solver" sizes="(max-width: 650px) 100vw, 1100px" /></figure>
     </section>
 
-    <section className="slime-section" id="slime-capabilities">
+    <section className="slime-section slime-numbered-section" id="slime-capabilities" data-section-number="02">
       <p className="eyebrow slime-reveal">02 / CAPABILITIES</p><h2 className="slime-reveal">What the engine can do</h2>
       <div className="slime-capabilities">{capabilities.map((item,index)=><div key={item.number} className="slime-capability slime-reveal" style={{ transitionDelay: `${index * 100}ms` }}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
     </section>
 
-    <section className="slime-section" id="slime-examples">
+    <section className="slime-section slime-numbered-section" id="slime-examples" data-section-number="03">
       <p className="eyebrow slime-reveal">03 / ANALYTICAL VALIDATION</p><h2 className="slime-reveal">Fluid mechanics benchmarks</h2><p className="slime-section-lede slime-reveal">Benchmark problems used to validate SLIME against analytical solutions, spanning canonical flows, hydrodynamic interactions, and complex moving boundaries.</p>
       <div className="slime-examples">{examples.map((item,index)=><div className="slime-example slime-reveal" style={{ transitionDelay: `${index * 100}ms` }} key={item.title}><CaseFigure kind={item.figure}/><div className="slime-example-copy"><p className="eyebrow">{item.type}</p><h3>{item.title}</h3><p className="slime-example-subtitle">{item.subtitle}</p><p>{item.text}</p></div></div>)}</div>
     </section>
 
-    <section className="slime-section slime-engine" id="slime-engine">
+    <section className="slime-section slime-engine slime-numbered-section" id="slime-engine" data-section-number="04">
       <p className="eyebrow slime-reveal">04 / UNDER THE HOOD</p><h2 className="slime-reveal">How SLIME works</h2>
       <p className="slime-engine-lede slime-reveal">GPU computation meets multilevel error correction.</p>
       <p className="slime-engine-description slime-reveal">SLIME combines the lattice Boltzmann method for flexible boundary handling with multigrid acceleration for efficient steady-state flow computation. Its CUDA implementation supports three-dimensional simulations.</p>

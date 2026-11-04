@@ -49,7 +49,7 @@ export default function SlimeMethodsPage() {
       <h1>Numerical methods &amp; implementation</h1>
       <p className="slime-methods-intro">Why low-Reynolds-number flow is computationally challenging, and how SLIME combines a steady lattice Boltzmann formulation, multigrid acceleration, local boundary treatment, warm starts, and portable parallel computing.</p>
     </header>
-    {sections.map((section, index) => <section className="slime-section" key={section.label} id={methodNavigation[index].id}>
+    {sections.map((section, index) => <section className="slime-section slime-numbered-section" key={section.label} id={methodNavigation[index].id} data-section-number={String(index + 1).padStart(2, "0")}>
       <p className="eyebrow slime-reveal">{section.label}</p>
       <h2 className="slime-reveal">{section.title}</h2>
       {section.paragraphs.map(paragraph => <p className="slime-reveal" key={paragraph}>{paragraph}</p>)}
