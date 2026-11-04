@@ -30,8 +30,9 @@ export function SlimeLightbox({ figures }: { figures: Figure[] }) {
     return () => cleanups.forEach(cleanup => cleanup());
   }, [figures]);
 
+  const isOpen = active !== null;
   useEffect(() => {
-    if (active === null) return;
+    if (!isOpen) return;
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
@@ -49,7 +50,7 @@ export function SlimeLightbox({ figures }: { figures: Figure[] }) {
     };
     window.addEventListener("keydown", keydown);
     return () => { document.body.style.overflow = originalOverflow; window.removeEventListener("keydown", keydown); previousFocus.current?.focus(); };
-  }, [active, figures.length]);
+  }, [isOpen, figures.length]);
 
   if (active === null || typeof document === "undefined") return null;
   const figure = figures[active];

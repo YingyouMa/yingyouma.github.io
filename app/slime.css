@@ -97,6 +97,7 @@
 .slime-metrics span{display:block;font-size:15px;color:#62788a;margin-top:9px}
 .slime-footnote{font-size:14px;color:#7b8995;line-height:1.7;max-width:800px}
 .slime-scroll-track{position:fixed;top:0;left:0;right:0;height:3px;z-index:80;background:transparent;pointer-events:none}
+.slime-scroll-mobile{display:none}
 .slime-scroll-track>div{height:100%;background:#547e9d;transition:width 100ms linear}
 .slime-scroll-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:50;width:330px;padding:24px 18px 20px;background:linear-gradient(155deg,rgba(255,255,255,.98),rgba(234,243,250,.97));border:1px solid #c8d9e6;border-radius:20px;box-shadow:0 20px 65px rgba(31,65,93,.2),0 3px 10px rgba(31,65,93,.07);backdrop-filter:blur(16px)}
 .slime-scroll-heading{display:flex;align-items:center;justify-content:space-between;padding:0 12px 20px;color:#53718b;font-size:13px;font-weight:800;letter-spacing:.14em;border-bottom:1px solid #cddde8}
@@ -116,6 +117,33 @@
 .slime-scroll-meter>span{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#315d86,#73b1d0);transition:width 100ms linear}
 .slime-showcase .slime-section[id]{scroll-margin-top:32px}
 @media(max-width:1450px){.slime-scroll-nav{width:280px;right:12px;padding:18px 12px}.slime-scroll-nav a{font-size:15px;min-height:53px}}
-@media(max-width:1100px){.slime-scroll-nav{display:none}}
+@media(min-width:1451px){.slime-showcase{margin-right:350px;max-width:calc(100% - 350px)}}
+@media(min-width:1101px) and (max-width:1450px){.slime-showcase{margin-right:290px;max-width:calc(100% - 290px)}}
+@media(max-width:1100px){.slime-scroll-nav{display:none}.slime-scroll-mobile{display:block;position:sticky;top:8px;z-index:55;margin:12px 0 20px;max-width:440px}.slime-scroll-mobile>button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:12px 16px;border:1px solid #c8d9e6;border-radius:12px;background:rgba(244,249,253,.97);color:#315d86;font:600 14px inherit;cursor:pointer;box-shadow:0 5px 20px rgba(31,65,93,.08)}.slime-scroll-mobile nav{display:flex;flex-direction:column;position:absolute;top:calc(100% + 4px);left:0;right:0;padding:8px;border:1px solid #c8d9e6;border-radius:12px;background:#fff;box-shadow:0 12px 32px rgba(31,65,93,.14)}.slime-scroll-mobile nav a{padding:11px 12px;color:#315d86;text-decoration:none;border-radius:6px}.slime-scroll-mobile nav a:hover,.slime-scroll-mobile nav a[aria-current]{background:#e5eff6}.slime-scroll-mobile button:focus-visible,.slime-scroll-mobile a:focus-visible{outline:2px solid #4c8cb6;outline-offset:2px}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.slime-reveal-ready .slime-capability:not(.slime-reveal-pending):hover,.slime-reveal-ready .slime-example:not(.slime-reveal-pending):hover{transition-delay:0ms!important}.slime-reveal-ready .slime-reveal-pending.slime-capability:hover,.slime-reveal-ready .slime-reveal-pending.slime-example:hover{transform:translateY(18px);box-shadow:none}}
 @media(max-width:950px){.slime-hero{grid-template-columns:1fr}.slime-hero-art .visual-large{height:360px}.slime-capabilities{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.slime-showcase{padding:28px 24px 70px}.slime-hero{padding:48px 0 55px;gap:30px}.slime-hero h1{font-size:76px}.slime-hero-art .visual-large{height:260px;min-height:0}.slime-section{padding:55px 0}.slime-section-layout,.slime-examples,.slime-metrics{grid-template-columns:1fr;gap:20px}.slime-capabilities{grid-template-columns:1fr 1fr;gap:18px}.slime-capability h3{font-size:23px}.slime-case-figure{height:205px}}
+
+/* Cool Scientific — scoped to SLIME; other portfolio pages retain their palette. */
+body:has(.slime-showcase){background:#f7f9fc;color:#1e3042;--line:#dce7f0;--cyan:#347da7;color-scheme:light}
+body:has(.slime-showcase) .site-header{background:#f7f9fc;border-bottom-color:#dce7f0;color:#1e3042}
+body:has(.slime-showcase) .site-header nav{color:#52677a}
+body:has(.slime-showcase) .site-footer{background:#f7f9fc;border-top-color:#dce7f0;color:#64798c}
+.slime-showcase{color:#1e3042}
+.slime-showcase h1,.slime-showcase h2,.slime-showcase h3{color:#1e3042}
+.slime-showcase .eyebrow{color:#347da7}
+.slime-showcase .back-link,.slime-showcase .detail-next a{color:#347da7}
+.slime-showcase .slime-full-name{color:#466780}
+.slime-showcase .slime-hero-description,.slime-showcase .slime-section-layout p,.slime-showcase .slime-section-lede,.slime-showcase .slime-overview .slime-section-layout p,.slime-showcase .slime-engine-description,.slime-showcase .slime-methods-intro,.slime-methods-page .slime-section p:not(.eyebrow){color:#52677a}
+.slime-showcase .slime-capability p,.slime-showcase .slime-example-copy>p:last-child{color:#52677a}
+.slime-showcase .slime-engine-lede{color:#294c66!important}
+.slime-showcase .tag-row span{color:#42657e;border-color:#cbdce8;background:rgba(255,255,255,.55)}
+.slime-showcase .slime-section{border-bottom-color:#dce7f0}
+.slime-showcase .slime-numbered-section{border-radius:16px}
+.slime-showcase .slime-numbered-section:nth-of-type(even){background:linear-gradient(120deg,rgba(226,239,248,.72),rgba(238,246,252,.38));box-shadow:0 0 0 20px rgba(226,239,248,.25)}
+.slime-showcase .slime-numbered-section::before{color:rgba(52,125,167,.09)}
+.slime-showcase .slime-example{background:#fff;border-color:#d7e5ef}
+.slime-showcase .slime-case-figure{background:linear-gradient(145deg,#f1f7fb,#e6f1f8)}
+.slime-showcase .slime-metrics>div{background:#eaf2f8;border-color:#d2e2ed}
+.slime-showcase .slime-hero::before,.slime-methods-page>header.slime-section::before{background:radial-gradient(ellipse,rgba(90,169,220,.31) 0%,rgba(150,206,239,.17) 42%,transparent 74%)}
+.slime-showcase .slime-hero::after,.slime-methods-page>header.slime-section::after{background:radial-gradient(ellipse,rgba(123,163,214,.19) 0%,rgba(182,209,238,.1) 48%,transparent 76%)}
