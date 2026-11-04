@@ -32,18 +32,6 @@ export function ProjectVisual({ kind, large = false }: { kind: Project["visual"]
           {[[32,"GEOMETRY","coordinates"],[230,"OPTIONS","OptsRod"],[428,"INTERACTION","Qt panel"]].map(([x,label,sub])=><g key={label}><rect x={Number(x)} y="209" width="140" height="85" rx="4" fill="#253344" stroke="#64778a" /><text x={Number(x)+14} y="241" fontSize="12" fill="#e3b48f">{label}</text><text x={Number(x)+14} y="267" fontSize="15" fill="#d6e2e9">{sub}</text></g>)}
         </svg>
       )}
-      {kind === "flow" && (
-        <svg viewBox="0 0 600 350" className="visual-svg" aria-hidden="true">
-          <defs><radialGradient id="sphere"><stop stopColor="#385c77" /><stop offset="1" stopColor="#10263b" /></radialGradient></defs>
-          {Array.from({ length: 13 }, (_, i) => {
-            const y = 45 + i * 21;
-            const offset = (y - 175) / 175;
-            return <path key={i} d={`M 0 ${y} C 170 ${y}, 185 ${y + (offset < 0 ? -1 : 1) * (60 - Math.abs(offset) * 45)}, 300 ${y + (offset < 0 ? -1 : 1) * (75 - Math.abs(offset) * 55)} S 450 ${y}, 600 ${y}`} fill="none" stroke="#62d6e8" strokeWidth="1.5" opacity={0.25 + (i % 3) * 0.17} />;
-          })}
-          <circle cx="302" cy="174" r="67" fill="url(#sphere)" stroke="#8bdbea" strokeWidth="1.4" />
-          <ellipse cx="302" cy="174" rx="67" ry="25" fill="none" stroke="#9cc5dc" opacity=".35" transform="rotate(-35 302 174)" />
-        </svg>
-      )}
       <span className="visual-caption">{kind === "plot" ? "OBJECT MODEL · CONFIGURATION · INTERACTION" : "CONCEPTUAL VISUALIZATION · NOT SIMULATION DATA"}</span>
     </div>
   );
