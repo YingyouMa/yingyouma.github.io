@@ -1,0 +1,111 @@
+.eigen-page{background:#f8f9fb;color:#263442}
+.eigen-workflow-opts-code{margin-top:30px;padding:26px 30px;background:#142333;border:1px solid #35495c;border-radius:10px;color:#e4edf4}
+.eigen-workflow-snapshots{margin-top:32px;max-width:960px}
+.eigen-workflow-snapshots h3{font-size:clamp(24px,2.5vw,34px);line-height:1.25;margin:0 0 16px;color:#263442}
+.eigen-workflow-snapshots h3 em{color:#a65c32}
+.eigen-workflow-snapshots p{font-size:clamp(19px,1.7vw,24px);line-height:1.65;color:#34495e;margin:0 0 12px}
+.eigen-workflow-opts-code pre{margin:20px 0 0;overflow-x:auto;font-size:clamp(16px,1.5vw,20px);line-height:1.7;font-family:Consolas,"Courier New",monospace}
+.eigen-page .eigen-workflow-code pre,.eigen-page .eigen-workflow-opts-code pre{color:#d8e5ef}
+.eigen-page .eigen-py-comment{color:#91a7b7}
+.eigen-page .eigen-py-keyword{color:#d9a7f3}
+.eigen-page .eigen-py-class{color:#82d7d2}
+.eigen-page .eigen-py-function{color:#f3cc84}
+.eigen-page .eigen-py-string{color:#a8d99b}
+.eigen-page .eigen-py-number{color:#f3b38e}
+.eigen-page .eigen-py-property{color:#a9cafa}
+@media(max-width:760px){.eigen-workflow-opts-code{padding:18px}}
+.eigen-workflow-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.eigen-workflow-comparison figure{margin:0;min-width:0;overflow:hidden;border:1px solid #c6d2dc;border-radius:10px;background:#fff}
+.eigen-workflow-comparison a{display:block;cursor:zoom-in}
+.eigen-workflow-comparison img{display:block;width:100%;height:auto}
+.eigen-workflow-comparison figcaption{display:flex;flex-wrap:wrap;gap:12px;padding:14px 16px;color:#536477;font-size:13px}
+.eigen-workflow-comparison figcaption strong{color:#263442;letter-spacing:.1em}
+.eigen-workflow-comparison-note{margin-top:14px;color:#66798a;font-size:12px}
+@media(max-width:760px){.eigen-workflow-comparison{grid-template-columns:1fr}}
+.eigen-page .back-link{color:#315d86}
+.eigen-page .back-link:hover{color:#20496e}
+.eigen-page .period{color:#315d86}
+.eigen-page .eigen-hero h1{color:#263442}
+.eigen-page .eigen-hero h1>span:first-child{color:#526b80}
+.eigen-page .eigen-hero-lede{color:#34495e}
+.eigen-page .eigen-subline,.eigen-page .eigen-two-column p{color:#536477}
+.eigen-page .eigen-hero-link{color:#a65c32;border-bottom-color:#b8734c}
+.eigen-page .eigen-section{border-top-color:#b8c6d2}
+.eigen-page .eigen-section h2 em{color:#a65c32}
+.eigen-page .eigen-feature,.eigen-page .eigen-demo,.eigen-page .eigen-architecture>div:not(.eigen-arch-middle),.eigen-page .eigen-arch-middle>div{color:#f0f3f7}
+.eigen-page .eigen-feature p,.eigen-page .eigen-demo-note{color:#c0cfdb}
+.eigen-page .eigen-feature-top,.eigen-page .eigen-demo-label,.eigen-page .eigen-code-foot{color:#d1dce6}
+.eigen-page .eigen-diagram-caption,.eigen-page .eigen-demo-stage>span{color:#bbcedd}
+.eigen-page .eigen-architecture span:not(.eigen-arch-arrow){color:#c4d2de}
+.eigen-page .eigen-object-box,.eigen-page .eigen-diagram-bottom>div{color:#f0f3f7}
+.eigen-page .eigen-object-box p,.eigen-page .eigen-diagram-bottom span{color:#c7d6e1}
+.eigen-page .eigen-demo-panel label{color:#f0f3f7}
+.eigen-page .eigen-footer{color:#536477;border-top-color:#b8c6d2}
+.eigen-page .eigen-footer a{color:#315d86}
+
+/* Hero typography aligned with the SLIME project page; preserve the display title. */
+.eigen-page>.back-link{font-size:clamp(17px,1.6vw,24px);font-weight:600}
+.eigen-page .eigen-hero .eyebrow{font-size:clamp(14px,1.15vw,17px);letter-spacing:.075em;line-height:1.5}
+.eigen-page .eigen-hero-lede{font-size:clamp(23px,2.6vw,36px);line-height:1.25;font-weight:550}
+.eigen-page .eigen-subline{font-size:clamp(18px,1.5vw,21px);line-height:1.8}
+.eigen-page .eigen-hero .tag-row span{font-size:clamp(12px,1vw,14px);padding:9px 12px}
+.eigen-page .eigen-hero-link{font-size:clamp(17px,1.35vw,19px);font-weight:600}
+.eigen-page .eigen-section>.eyebrow{display:block;font-size:clamp(24px,2.5vw,36px);font-weight:800;letter-spacing:.045em;line-height:1.25;color:#a65c32;margin:0 0 14px}
+.eigen-page .eigen-intro-heading{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.eigen-page .eigen-intro-heading .eigen-intro-goal{font-size:clamp(22px,2vw,29px);line-height:1.5;font-weight:500;color:#34495e;max-width:510px;margin:0}
+.eigen-page .eigen-intro-goal strong{font-weight:800;color:#a65c32}
+/* Chapter 1 body copy: match the readable scale used in later chapters. */
+.eigen-page .eigen-intro .eigen-two-column>div:last-child p{font-size:clamp(19px,1.7vw,24px);line-height:1.65;color:#34495e}
+/* Shared prose scale across chapters 1–3; excludes headings, captions and code blocks. */
+.eigen-page{--eigen-body-size:clamp(19px,1.7vw,24px)}
+.eigen-page .eigen-intro .eigen-two-column>div:last-child p,
+.eigen-page .eigen-workflow-intro,
+.eigen-page .eigen-workflow-step-copy>p:last-child,
+.eigen-page .eigen-workflow-snapshots p,
+.eigen-page .eigen-architecture-lede,
+.eigen-page .eigen-architecture-copy p{font-size:var(--eigen-body-size);line-height:1.65;color:#34495e}
+.eigen-page .eigen-workflow-intro{font-size:clamp(19px,1.7vw,24px);line-height:1.65;max-width:920px;color:#34495e;margin:0 0 24px}
+.eigen-page .eigen-workflow-step{margin-top:64px}
+.eigen-page .eigen-workflow-step-number{font-size:clamp(16px,1.4vw,20px);font-weight:800;letter-spacing:.08em;color:#a65c32;margin:0 0 10px}
+.eigen-page .eigen-workflow-step-copy h3{font-size:clamp(30px,3.2vw,46px);letter-spacing:-.04em;line-height:1.15;margin:0 0 18px}
+.eigen-page .eigen-workflow-step-copy>p:last-child{font-size:clamp(17px,1.4vw,20px);line-height:1.75;color:#536477;max-width:1000px}
+.eigen-page .eigen-workflow-step-copy code{font-size:.92em;color:#a65c32}
+.eigen-page .eigen-workflow-example{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;margin-top:30px}
+.eigen-page .eigen-workflow-code,.eigen-page .eigen-workflow-result{min-width:0;background:#111d2b;color:#eaf2f8;border:1px solid #34506a;border-radius:12px;overflow:hidden}
+.eigen-page .eigen-workflow-code{padding:24px}
+.eigen-page .eigen-workflow-code-label,.eigen-page .eigen-workflow-result figcaption{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;color:#f0b687}
+.eigen-page .eigen-workflow-code pre{font-size:clamp(16px,1.5vw,20px);line-height:1.75;overflow-x:auto;margin:20px 0 0}
+
+/* Keep all code examples legible, including the conceptual demo. */
+.eigen-page .eigen-demo-code pre{font-size:clamp(16px,1.5vw,20px);line-height:1.75;overflow-x:auto}
+.eigen-page .eigen-workflow-result{display:flex;flex-direction:column;margin:0}
+.eigen-page .eigen-workflow-result img{width:100%;height:100%;min-height:300px;object-fit:contain;flex:1}
+.eigen-page .eigen-workflow-result figcaption{padding:14px 18px;border-top:1px solid #34506a}
+@media(max-width:900px){.eigen-page .eigen-workflow-example{grid-template-columns:1fr}}
+
+/* Real vector-field hero, replacing the earlier schematic PlotRod diagram. */
+.eigen-page .eigen-vector-visual{display:flex;flex-direction:column;gap:12px;padding:18px;background:#f0f4f7;border:1px solid #bacbd7;border-radius:18px;min-width:0;color:#263b4b;overflow:hidden}
+.eigen-page .eigen-vector-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#516c80;font-size:11px;font-weight:700;letter-spacing:.12em}
+.eigen-page .eigen-vector-top strong{color:#a65c32;font-size:14px;letter-spacing:0}
+.eigen-page .eigen-vector-frame{position:relative;isolation:isolate;overflow:hidden;border-radius:10px;background:#0c1825;min-height:270px}
+.eigen-page .eigen-vector-frame img{display:block;width:100%;height:auto;min-height:270px;object-fit:cover}
+/* Zoom the rendered field within the same card instead of shrinking it to fit. */
+.eigen-page .eigen-vector-frame{height:clamp(330px,34vw,490px)}
+.eigen-page .eigen-vector-frame img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:center;transform:scale(1.3);transform-origin:center}
+.eigen-page .eigen-vector-callout{position:absolute;z-index:1;display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:rgba(247,250,252,.94);border:1px solid #b4c7d5;border-left:3px solid #a65c32;border-radius:8px;backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(21,43,61,.12)}
+.eigen-page .eigen-vector-callout small,.eigen-page .eigen-vector-controls small{color:#a65c32;font-size:clamp(12px,1vw,15px);font-weight:800;letter-spacing:.1em}
+.eigen-page .eigen-vector-callout strong,.eigen-page .eigen-vector-controls strong{color:#263b4b;font-size:clamp(15px,1.25vw,19px);line-height:1.3}
+.eigen-page .eigen-vector-callout span{color:#344f63;font-size:clamp(20px,1.8vw,27px);font-weight:800;line-height:1.2}
+.eigen-page .eigen-vector-controls span{color:#5a7182;font-size:clamp(13px,1.05vw,16px)}
+.eigen-page .eigen-vector-geometry{top:13px;left:13px}
+.eigen-page .eigen-vector-options{right:13px;bottom:13px}
+.eigen-page .eigen-vector-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;background:#e3ecf2;border:1px solid #b4c7d5;border-radius:9px}
+.eigen-page .eigen-vector-controls>div:first-child{display:flex;flex-direction:column;gap:5px}
+.eigen-page .eigen-vector-control-lines{width:85px;display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.eigen-page .eigen-vector-control-lines span{height:3px;background:linear-gradient(90deg,#749ab6,#e4aa80);border-radius:8px;position:relative}
+.eigen-page .eigen-vector-control-lines span:after{content:"";position:absolute;top:-4px;left:65%;height:11px;width:11px;background:#f4e2d2;border-radius:50%}
+.eigen-page .eigen-vector-control-lines span:nth-child(2):after{left:28%}
+.eigen-page .eigen-vector-control-lines span:nth-child(3):after{left:78%}
+.eigen-page .eigen-vector-foot{font-size:10px;letter-spacing:.11em;color:#617c8f}
+@media(max-width:640px){.eigen-page .eigen-vector-visual{padding:12px}.eigen-page .eigen-vector-frame img{min-height:240px}.eigen-page .eigen-vector-callout{padding:9px 10px}.eigen-page .eigen-vector-callout strong{font-size:13px}.eigen-page .eigen-vector-callout span{font-size:19px}}
+@media(max-width:640px){.eigen-page .eigen-vector-frame{height:300px}.eigen-page .eigen-vector-frame img{min-height:0;transform:scale(1.17)}}
