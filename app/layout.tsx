@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "../components/site-header";
+import { SiteFooter } from "../components/site-footer";
 import { LanguageProvider } from "../components/language-provider";
 import "./globals.css";
 import "./academic.css";
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="site-shell">
             <SiteHeader />
             <main>{children}</main>
-            <footer className="site-footer"><span>© {new Date().getFullYear()} Yingyou Ma</span><span>Scientific computing and software</span></footer>
+            <SiteFooter year={new Date().getFullYear()} />
           </div>
         </LanguageProvider>
       </body>

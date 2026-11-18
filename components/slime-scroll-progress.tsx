@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 type Section = { id: string; label: string };
+type SectionLabels = { mobileTitle: string; navTitle: string; readingProgress: string; ariaLabel: string };
 
-export function SlimeScrollProgress({ sections }: { sections: Section[] }) {
+export function SlimeScrollProgress({ sections, labels = { mobileTitle: "Sections", navTitle: "ON THIS PAGE", readingProgress: "READING PROGRESS", ariaLabel: "Page sections" } }: { sections: Section[]; labels?: SectionLabels }) {
   const [progress, setProgress] = useState(0);
   const [active, setActive] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,14 +37,14 @@ export function SlimeScrollProgress({ sections }: { sections: Section[] }) {
     <div className="slime-scroll-track" aria-hidden="true"><div style={{ width: `${progress}%` }} /></div>
     <div className="slime-scroll-mobile">
       <button type="button" aria-expanded={mobileOpen} aria-controls="slime-mobile-sections" onClick={() => setMobileOpen(value => !value)}>
-        <span>Sections · {sections[active]?.label}</span><span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
+        <span>{labels.mobileTitle} · {sections[active]?.label}</span><span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
       </button>
-      {mobileOpen && <nav id="slime-mobile-sections" aria-label="Page sections (mobile)">
+      {mobileOpen && <nav id="slime-mobile-sections" aria-label={labels.ariaLabel}>
         {sections.map((section, index) => <a key={section.id} href={`#${section.id}`} aria-current={index === active ? "location" : undefined} onClick={() => setMobileOpen(false)}>{String(index + 1).padStart(2, "0")} · {section.label}</a>)}
       </nav>}
     </div>
-    <nav className="slime-scroll-nav" aria-label="Page sections">
-      <div className="slime-scroll-heading"><span>ON THIS PAGE</span><span className="slime-scroll-count">{String(active + 1).padStart(2, "0")} / {String(sections.length).padStart(2, "0")}</span></div>
+    <nav className="slime-scroll-nav" aria-label={labels.ariaLabel}>
+      <div className="slime-scroll-heading"><span>{labels.navTitle}</span><span className="slime-scroll-count">{String(active + 1).padStart(2, "0")} / {String(sections.length).padStart(2, "0")}</span></div>
       <div className="slime-scroll-items">
         {sections.map((section, index) => <a key={section.id} href={`#${section.id}`} className={index === active ? "is-active" : ""} aria-current={index === active ? "location" : undefined}>
           <span className="slime-scroll-number">{String(index + 1).padStart(2, "0")}</span>
@@ -51,7 +52,7 @@ export function SlimeScrollProgress({ sections }: { sections: Section[] }) {
           <span className="slime-scroll-arrow" aria-hidden="true">↗</span>
         </a>)}
       </div>
-      <div className="slime-scroll-footer"><span>READING PROGRESS</span><strong>{Math.round(progress)}%</strong><div className="slime-scroll-meter"><span style={{ width: `${progress}%` }} /></div></div>
+      <div className="slime-scroll-footer"><span>{labels.readingProgress}</span><strong>{Math.round(progress)}%</strong><div className="slime-scroll-meter"><span style={{ width: `${progress}%` }} /></div></div>
     </nav>
   </>;
 }

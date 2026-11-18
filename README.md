@@ -25,8 +25,12 @@ Open http://localhost:3000.
 
 The header offers **Language → English / 简体中文** on every page. The chosen
 language is saved in browser local storage and restored on later visits.
-The Chinese mode currently uses the same English text as the English mode;
-translations can be added later through `components/language-provider.tsx`.
+The SLIME overview page has a complete Simplified Chinese translation, including
+its section navigation. SLIME's name, full English name, and figures are unchanged.
+The separate SLIME numerical-methods page and other project pages still use their
+original English body text. Shared navigation and footer labels are translated.
+Translations for the SLIME overview live in `lib/slime-home-copy.ts`; language
+selection state lives in `components/language-provider.tsx`.
 
 ## Editing
 

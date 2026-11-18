@@ -2,11 +2,11 @@ import type { Project } from "../lib/projects";
 import Image from "next/image";
 import slimeCover from "../figures/SLIME/slime.png";
 
-export function ProjectVisual({ kind, large = false }: { kind: Project["visual"]; large?: boolean }) {
+export function ProjectVisual({ kind, large = false, alt }: { kind: Project["visual"]; large?: boolean; alt?: string }) {
   if (kind === "flow") {
     return (
       <div className={`project-visual visual-flow ${large ? "visual-large" : ""}`}>
-        <Image src={slimeCover} alt="SLIME fluid simulation cover" fill sizes={large ? "(max-width: 950px) 100vw, 50vw" : "(max-width: 650px) 100vw, 33vw"} style={{ objectFit: "contain", objectPosition: "center" }} priority={large} />
+        <Image src={slimeCover} alt={alt ?? "SLIME fluid simulation cover"} fill sizes={large ? "(max-width: 950px) 100vw, 50vw" : "(max-width: 650px) 100vw, 33vw"} style={{ objectFit: "contain", objectPosition: "center" }} priority={large} />
       </div>
     );
   }

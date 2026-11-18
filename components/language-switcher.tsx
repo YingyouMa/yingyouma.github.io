@@ -11,6 +11,7 @@ const options: { value: SiteLanguage; label: string }[] = [
 
 export function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
+  const zh = language === "zh-CN";
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
 
@@ -40,13 +41,13 @@ export function LanguageSwitcher() {
         }
       }}
     >
-      <summary ref={summaryRef} aria-label={`Choose language, current: ${language === "en" ? "English" : "简体中文"}`}>
+      <summary ref={summaryRef} aria-label={zh ? "选择语言，当前：简体中文" : "Choose language, current: English"}>
         <Globe2 size={16} aria-hidden="true" />
-        <span>Language</span>
+        <span>{zh ? "语言" : "Language"}</span>
         <span className="language-current" aria-hidden="true">{language === "en" ? "EN" : "中"}</span>
         <ChevronDown className="language-chevron" size={14} aria-hidden="true" />
       </summary>
-      <div className="language-menu" role="group" aria-label="Choose language">
+      <div className="language-menu" role="group" aria-label={zh ? "选择语言" : "Choose language"}>
         {options.map((option) => (
           <button
             key={option.value}
@@ -55,7 +56,7 @@ export function LanguageSwitcher() {
             aria-pressed={language === option.value}
             onClick={() => selectLanguage(option.value)}
           >
-            <span>{option.label}</span>
+            <span>{zh && option.value === "en" ? "英语" : option.label}</span>
             {language === option.value && <Check size={15} aria-hidden="true" />}
           </button>
         ))}

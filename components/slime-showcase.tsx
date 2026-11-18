@@ -1,3 +1,5 @@
+"use client";
+
 import { ProjectVisual } from "./visual";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,31 +9,12 @@ import { SlimeSpotlightCards } from "./slime-spotlight-cards";
 import { SlimeUnderwater } from "./slime-underwater";
 import slimeOverview from "../figures/SLIME/slime_overview.png";
 import slimeMethod from "../figures/SLIME/slime_method.png";
+import { useLanguage } from "./language-provider";
+import { slimeHomeCopy } from "../lib/slime-home-copy";
 import "../app/slime.css";
 
-const capabilities = [
-  { number: "01", title: "Steady-state flow", text: "Solve the steady Stokes problem directly, without marching through the physical relaxation transient." },
-  { number: "02", title: "Complex solid boundaries", text: "Represent curved and non-convex immersed objects with lattice-based no-slip boundary treatment." },
-  { number: "03", title: "Moving geometries", text: "Update fluid and solid nodes as objects change position, with warm starts between successive solves." },
-  { number: "04", title: "Volumetric forcing", text: "Apply body forces throughout the computational domain, including localized and periodic forcing." },
-];
-
-const examples = [
-  { type: "BODY-FORCE VALIDATION", title: "Periodic Stokeslet", subtitle: "Localized volumetric forcing", text: "The flow response to a localized force in a periodic domain tests how SLIME applies body forces throughout the fluid.", figure: "stokeslet" },
-  { type: "STANDARD BOUNDARY VALIDATION", title: "Channel flows", subtitle: "Poiseuille & Couette", text: "Pressure-driven and wall-driven channel flows verify the treatment of conventional no-slip boundaries through their velocity profiles.", figure: "channel" },
-  { type: "COMPLEX BOUNDARY VALIDATION", title: "Rotating dumbbell", subtitle: "Non-convex solid geometry", text: "A rotating two-lobe body provides a benchmark for hydrodynamic flow around a non-convex object, testing the accuracy of SLIME's complex-boundary treatment.", figure: "dumbbell" },
-  { type: "MOVING BOUNDARY VALIDATION", title: "Sphere in a spherical cavity", subtitle: "Translating sphere in a fixed cavity", text: "A sphere translates within a fixed spherical cavity, testing how accurately SLIME handles moving solid boundaries and the resulting fluid flow.", figure: "cavity" },
-];
-
-const showcaseSections = [
-  { id: "slime-overview", label: "Overview" },
-  { id: "slime-capabilities", label: "Capabilities" },
-  { id: "slime-examples", label: "Validation" },
-  { id: "slime-engine", label: "How it works" },
-];
-
-function CaseFigure({ kind }: { kind: string }) {
-  return <div className={`slime-case-figure slime-figure-${kind}`} role="img" aria-label={`Schematic illustration of ${kind}; not simulation data`}>
+function CaseFigure({ kind, caption, ariaLabel }: { kind: string; caption: string; ariaLabel: string }) {
+  return <div className={`slime-case-figure slime-figure-${kind}`} role="img" aria-label={ariaLabel}>
     <svg viewBox="0 0 420 220" aria-hidden="true">
       {kind === "channel" && <>
         <path d="M35 48H385M35 172H385" stroke="#7894a9" strokeWidth="5" />
@@ -54,57 +37,59 @@ function CaseFigure({ kind }: { kind: string }) {
         <path d="M210 110h-32" stroke="#7391a4" strokeDasharray="4 5" />
       </>}
     </svg>
-    <span>SCHEMATIC · NOT SIMULATION DATA</span>
+    <span>{caption}</span>
   </div>;
 }
 
 export function SlimeShowcase() {
+  const { language } = useLanguage();
+  const copy = slimeHomeCopy[language];
   return <article className="slime-showcase">
     <SlimeUnderwater />
     <SlimeScrollReveal />
     <SlimeSpotlightCards />
-    <SlimeScrollProgress sections={showcaseSections} />
-    <a className="back-link" href="/projects">← All projects</a>
+    <SlimeScrollProgress sections={copy.sections} labels={copy.scrollLabels} />
+    <a className="back-link" href="/projects">← {copy.back}</a>
     <header className="slime-hero">
       <div className="slime-hero-copy">
-        <p className="eyebrow">SCIENTIFIC COMPUTING SOFTWARE / GPU SOLVER</p>
+        <p className="eyebrow">{copy.eyebrow}</p>
         <h1>SLIME<span className="period">.</span></h1>
         <p className="slime-full-name">Stokes Lattice-Boltzmann Iterative Multigrid Engine</p>
-        <p className="slime-hero-title">A GPU-accelerated solver for 3D viscous fluid flows around complex and moving objects.</p>
-        <div className="tag-row"><span>3D Fluid Simulation</span><span>GPU Accelerated</span><span>Complex Geometries</span><span>Moving Boundaries</span></div>
+        <p className="slime-hero-title">{copy.heroTitle}</p>
+        <div className="tag-row">{copy.heroTags.map(tag => <span key={tag}>{tag}</span>)}</div>
         <div className="slime-hero-jumps">
-          <a className="slime-jump" href="#slime-examples">Explore simulation cases ↓</a>
-          <a className="slime-jump" href="#slime-engine">Explore numerical methods ↓</a>
+          <a className="slime-jump" href="#slime-examples">{copy.jumps[0]} ↓</a>
+          <a className="slime-jump" href="#slime-engine">{copy.jumps[1]} ↓</a>
         </div>
       </div>
-      <div className="slime-hero-art"><ProjectVisual kind="flow" large /></div>
+      <div className="slime-hero-art"><ProjectVisual kind="flow" large alt={copy.heroImageAlt} /></div>
     </header>
 
     <section className="slime-section slime-overview slime-numbered-section" id="slime-overview" data-section-number="01">
-      <p className="eyebrow slime-reveal">01 / OVERVIEW</p>
-      <div className="slime-section-layout"><h2 className="slime-reveal">Combining efficient computation with flexible boundaries.</h2><div className="slime-reveal"><p>Simulating highly viscous fluids presents a practical trade-off. Some conventional methods can solve steady flow efficiently but require more elaborate treatment of complex or moving solid boundaries. Other methods handle such boundaries naturally, yet can become computationally expensive when they must simulate the rapid relaxation of a highly viscous fluid.</p><p>SLIME brings these strengths together. It uses the lattice Boltzmann method to handle complicated boundaries and a GPU-accelerated multigrid solver to compute steady Stokes flow directly, without spending time simulating the transient relaxation.</p></div></div>
-      <figure className="slime-overview-figure slime-reveal slime-reveal-image"><Image src={slimeOverview} alt="Overview illustration of the SLIME solver" sizes="(max-width: 650px) 100vw, 1100px" /></figure>
+      <p className="eyebrow slime-reveal">{copy.overview.label}</p>
+      <div className="slime-section-layout"><h2 className="slime-reveal">{copy.overview.title}</h2><div className="slime-reveal">{copy.overview.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></div>
+      <figure className="slime-overview-figure slime-reveal slime-reveal-image"><Image src={slimeOverview} alt={copy.overview.imageAlt} sizes="(max-width: 650px) 100vw, 1100px" /></figure>
     </section>
 
     <section className="slime-section slime-numbered-section" id="slime-capabilities" data-section-number="02">
-      <p className="eyebrow slime-reveal">02 / CAPABILITIES</p><h2 className="slime-reveal">What the engine can do</h2>
-      <div className="slime-capabilities">{capabilities.map((item,index)=><div key={item.number} className="slime-capability slime-reveal" style={{ transitionDelay: `${index * 100}ms` }}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
+      <p className="eyebrow slime-reveal">{copy.capabilitiesLabel}</p><h2 className="slime-reveal">{copy.capabilitiesTitle}</h2>
+      <div className="slime-capabilities">{copy.capabilities.map((item,index)=><div key={item.number} className="slime-capability slime-reveal" style={{ transitionDelay: `${index * 100}ms` }}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
     </section>
 
     <section className="slime-section slime-numbered-section" id="slime-examples" data-section-number="03">
-      <p className="eyebrow slime-reveal">03 / ANALYTICAL VALIDATION</p><h2 className="slime-reveal">Fluid mechanics benchmarks</h2><p className="slime-section-lede slime-reveal">Benchmark problems used to validate SLIME against analytical solutions, spanning canonical flows, hydrodynamic interactions, and complex moving boundaries.</p>
-      <div className="slime-examples">{examples.map((item,index)=><div className="slime-example slime-reveal" style={{ transitionDelay: `${index * 100}ms` }} key={item.title}><CaseFigure kind={item.figure}/><div className="slime-example-copy"><p className="eyebrow">{item.type}</p><h3>{item.title}</h3><p className="slime-example-subtitle">{item.subtitle}</p><p>{item.text}</p></div></div>)}</div>
+      <p className="eyebrow slime-reveal">{copy.validation.label}</p><h2 className="slime-reveal">{copy.validation.title}</h2><p className="slime-section-lede slime-reveal">{copy.validation.introduction}</p>
+      <div className="slime-examples">{copy.examples.map((item,index)=><div className="slime-example slime-reveal" style={{ transitionDelay: `${index * 100}ms` }} key={item.figure}><CaseFigure kind={item.figure} caption={copy.validation.schematicCaption} ariaLabel={`${copy.validation.schematicAria}：${item.title}`}/><div className="slime-example-copy"><p className="eyebrow">{item.type}</p><h3>{item.title}</h3><p className="slime-example-subtitle">{item.subtitle}</p><p>{item.text}</p></div></div>)}</div>
     </section>
 
     <section className="slime-section slime-engine slime-numbered-section" id="slime-engine" data-section-number="04">
-      <p className="eyebrow slime-reveal">04 / UNDER THE HOOD</p><h2 className="slime-reveal">How SLIME works</h2>
-      <p className="slime-engine-lede slime-reveal">GPU computation meets multilevel error correction.</p>
-      <p className="slime-engine-description slime-reveal">SLIME combines the lattice Boltzmann method for flexible boundary handling with multigrid acceleration for efficient steady-state flow computation. Its CUDA implementation supports three-dimensional simulations.</p>
-      <figure className="slime-method-figure slime-reveal slime-reveal-image"><Image src={slimeMethod} alt="Illustration of the SLIME numerical method" sizes="(max-width: 650px) 100vw, 1100px" /></figure>
-      <div className="tag-row"><span>Lattice Boltzmann Method</span><span>Multigrid Solver</span><span>CUDA Acceleration</span></div>
-      <Link className="slime-methods-link" href="/projects/slime/methods">Explore the numerical methods ↗</Link>
+      <p className="eyebrow slime-reveal">{copy.engine.label}</p><h2 className="slime-reveal">{copy.engine.title}</h2>
+      <p className="slime-engine-lede slime-reveal">{copy.engine.lede}</p>
+      <p className="slime-engine-description slime-reveal">{copy.engine.description}</p>
+      <figure className="slime-method-figure slime-reveal slime-reveal-image"><Image src={slimeMethod} alt={copy.engine.imageAlt} sizes="(max-width: 650px) 100vw, 1100px" /></figure>
+      <div className="tag-row">{copy.engine.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+      <Link className="slime-methods-link" href="/projects/slime/methods">{copy.engine.methodsLink} ↗</Link>
     </section>
 
-    <div className="detail-next"><a href="/projects">← All projects</a></div>
+    <div className="detail-next"><a href="/projects">← {copy.back}</a></div>
   </article>;
 }
