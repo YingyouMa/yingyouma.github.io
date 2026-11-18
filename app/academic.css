@@ -1,7 +1,9 @@
 :root{color-scheme:light;--bg:#f8f9fb;--surface:#fff;--line:#dce2e8;--text:#242a32;--muted:#626e7c;--cyan:#315d86}
 body{background:var(--bg);color:var(--text)}
 ::selection{background:#d7e7f4;color:#182f47}
-.site-header{height:78px;border-bottom:1px solid var(--line);background:#ffffffd9}
+/* Keep the header's stacking context above both projects' floating section menus.
+   The menu's own z-index cannot escape a lower-z-index parent header. */
+.site-header{height:78px;border-bottom:1px solid var(--line);background:#ffffffd9;z-index:150}
 .wordmark{font-weight:650;letter-spacing:.035em;color:#263442}
 .wordmark-dot,.period{color:var(--cyan)}
 .site-header nav{color:#526171;font-size:14px}
