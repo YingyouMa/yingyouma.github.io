@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "./language-provider";
 
-const sections = [
+const englishSections = [
   { id: "eigen-concept", label: "The idea", number: "01" },
   { id: "eigen-principles", label: "The workflow", number: "02" },
   { id: "eigen-interactive-refinement", label: "Interactive refinement", number: "2.2", sub: true },
@@ -15,7 +16,23 @@ const sections = [
   { id: "eigen-vector-plane", label: "Field sampling", number: "4.3", sub: true },
 ];
 
+const chineseSections: typeof englishSections = [
+  { id: "eigen-concept", label: "设计理念", number: "01" },
+  { id: "eigen-principles", label: "工作流程", number: "02" },
+  { id: "eigen-interactive-refinement", label: "交互式调整", number: "2.2", sub: true },
+  { id: "eigen-inspect-options", label: "查看参数", number: "2.3", sub: true },
+  { id: "eigen-reuse-options", label: "保存与复用", number: "2.4", sub: true },
+  { id: "eigen-architecture", label: "架构概览", number: "03" },
+  { id: "eigen-advanced-interactivity", label: "交互式展示", number: "04" },
+  { id: "eigen-pick-inspect", label: "选取与查看", number: "4.1", sub: true },
+  { id: "eigen-highlight", label: "高亮对象", number: "4.2", sub: true },
+  { id: "eigen-vector-plane", label: "矢量场采样", number: "4.3", sub: true },
+];
+
 export function EigenplotScrollProgress() {
+  const { language } = useLanguage();
+  const zh = language === "zh-CN";
+  const sections = zh ? chineseSections : englishSections;
   const [progress, setProgress] = useState(0);
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
@@ -43,20 +60,20 @@ export function EigenplotScrollProgress() {
       window.removeEventListener("resize", schedule);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [sections]);
 
   return <>
     <div className="eigen-scroll-track" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
-    <nav className={`eigen-scroll-nav${desktopOpen ? " is-expanded" : ""}`} aria-label="EigenPlot3D page sections">
-      <button className="eigen-scroll-toggle" type="button" aria-expanded={desktopOpen} aria-label={desktopOpen ? "Collapse chapter navigation" : "Expand chapter navigation"} onClick={() => setDesktopOpen(value => !value)}><span aria-hidden="true">{desktopOpen ? "→" : "☰"}</span></button>
+    <nav className={`eigen-scroll-nav${desktopOpen ? " is-expanded" : ""}`} aria-label={zh ? "EigenPlot3D 页面目录" : "EigenPlot3D page sections"}>
+      <button className="eigen-scroll-toggle" type="button" aria-expanded={desktopOpen} aria-label={zh ? (desktopOpen ? "收起章节目录" : "展开章节目录") : (desktopOpen ? "Collapse chapter navigation" : "Expand chapter navigation")} onClick={() => setDesktopOpen(value => !value)}><span aria-hidden="true">{desktopOpen ? "→" : "☰"}</span></button>
       <div className="eigen-scroll-items">
         {sections.map((section, index) => <a key={section.id} href={`#${section.id}`} onClick={() => setDesktopOpen(false)} className={`${index === active ? "is-active " : ""}${section.sub ? "is-sub" : ""}`} aria-current={index === active ? "location" : undefined}><span className="eigen-scroll-number">{section.number}</span><span>{section.label}</span></a>)}
       </div>
       <div className="eigen-scroll-footer"><strong>{Math.round(progress)}%</strong><div className="eigen-scroll-meter" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div></div>
     </nav>
     <div className="eigen-scroll-mobile">
-      <button type="button" aria-expanded={open} aria-controls="eigen-mobile-sections" onClick={() => setOpen(value => !value)}><span>Sections · {sections[active].label}</span><span aria-hidden="true">{open ? "−" : "+"}</span></button>
-      {open && <nav id="eigen-mobile-sections" aria-label="EigenPlot3D page sections (mobile)">{sections.map((section, index) => <a key={section.id} href={`#${section.id}`} aria-current={index === active ? "location" : undefined} onClick={() => setOpen(false)}>{section.number} · {section.label}</a>)}</nav>}
+      <button type="button" aria-expanded={open} aria-controls="eigen-mobile-sections" onClick={() => setOpen(value => !value)}><span>{zh ? "章节" : "Sections"} · {sections[active].label}</span><span aria-hidden="true">{open ? "−" : "+"}</span></button>
+      {open && <nav id="eigen-mobile-sections" aria-label={zh ? "EigenPlot3D 移动端章节目录" : "EigenPlot3D page sections (mobile)"}>{sections.map((section, index) => <a key={section.id} href={`#${section.id}`} aria-current={index === active ? "location" : undefined} onClick={() => setOpen(false)}>{section.number} · {section.label}</a>)}</nav>}
     </div>
   </>;
 }

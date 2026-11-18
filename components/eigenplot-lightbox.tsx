@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLanguage } from "./language-provider";
 
 export type EigenplotImage = { src: string; alt: string };
 
 export function EigenplotLightbox({ images }: { images: EigenplotImage[] }) {
+  const { language } = useLanguage();
+  const zh = language === "zh-CN";
   const [active, setActive] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -52,10 +55,10 @@ export function EigenplotLightbox({ images }: { images: EigenplotImage[] }) {
 
   if (active === null || typeof document === "undefined") return null;
   const item = images[active];
-  return createPortal(<div className="eigen-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged scientific visualization" onMouseDown={event => { if (event.target === event.currentTarget) setActive(null); }}>
-    <button ref={closeRef} type="button" className="eigen-lightbox-close" aria-label="Close enlarged image" onClick={() => setActive(null)}>×</button>
-    <button type="button" className="eigen-lightbox-prev" aria-label="Previous image" onClick={() => setActive((active - 1 + images.length) % images.length)}>‹</button>
+  return createPortal(<div className="eigen-lightbox" role="dialog" aria-modal="true" aria-label={zh ? "放大的科学可视化图片" : "Enlarged scientific visualization"} onMouseDown={event => { if (event.target === event.currentTarget) setActive(null); }}>
+    <button ref={closeRef} type="button" className="eigen-lightbox-close" aria-label={zh ? "关闭图片" : "Close enlarged image"} onClick={() => setActive(null)}>×</button>
+    <button type="button" className="eigen-lightbox-prev" aria-label={zh ? "上一张图片" : "Previous image"} onClick={() => setActive((active - 1 + images.length) % images.length)}>‹</button>
     <figure><img src={item.src} alt={item.alt} /><figcaption>{active + 1} / {images.length} · {item.alt}</figcaption></figure>
-    <button type="button" className="eigen-lightbox-next" aria-label="Next image" onClick={() => setActive((active + 1) % images.length)}>›</button>
+    <button type="button" className="eigen-lightbox-next" aria-label={zh ? "下一张图片" : "Next image"} onClick={() => setActive((active + 1) % images.length)}>›</button>
   </div>, document.body);
 }
