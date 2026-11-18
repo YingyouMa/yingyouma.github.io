@@ -72,7 +72,10 @@ export function SlimeShowcase() {
         <p className="slime-full-name">Stokes Lattice-Boltzmann Iterative Multigrid Engine</p>
         <p className="slime-hero-title">A GPU-accelerated solver for 3D viscous fluid flows around complex and moving objects.</p>
         <div className="tag-row"><span>3D Fluid Simulation</span><span>GPU Accelerated</span><span>Complex Geometries</span><span>Moving Boundaries</span></div>
-        <a className="slime-jump" href="#slime-examples">Explore simulation cases ↓</a>
+        <div className="slime-hero-jumps">
+          <a className="slime-jump" href="#slime-examples">Explore simulation cases ↓</a>
+          <a className="slime-jump" href="#slime-engine">Explore numerical methods ↓</a>
+        </div>
       </div>
       <div className="slime-hero-art"><ProjectVisual kind="flow" large /></div>
     </header>
