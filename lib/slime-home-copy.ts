@@ -80,7 +80,7 @@ export const slimeHomeCopy: Record<SiteLanguage, SlimeHomeCopy> = {
   "zh-CN": {
     back: "所有项目",
     eyebrow: "科学计算软件 / GPU 求解器",
-    heroTitle: "面向复杂几何体和运动物体周围三维黏性流动的 GPU 加速求解器。",
+    heroTitle: "擅长处理复杂几何体和运动物体的三维黏性流动的 GPU 加速求解器",
     heroImageAlt: "SLIME 流体模拟封面图",
     heroTags: ["三维流体模拟", "GPU 加速", "复杂几何体", "运动边界"],
     jumps: ["查看模拟算例", "了解数值方法"],
@@ -105,13 +105,13 @@ export const slimeHomeCopy: Record<SiteLanguage, SlimeHomeCopy> = {
     capabilities: [
       { number: "01", title: "稳态流动求解", text: "直接求解稳态斯托克斯流动，无需逐步模拟流体的瞬态松弛过程。" },
       { number: "02", title: "复杂固体边界", text: "通过基于格点的无滑移边界处理，表示曲面及非凸形状的浸没物体。" },
-      { number: "03", title: "运动几何体", text: "随着物体位置变化更新流体和固体格点，并在连续求解之间使用热启动。" },
+      { number: "03", title: "运动几何体", text: "随着物体位置变化更新流体和固体格点，并使用热启动来加快连续时间求解" },
       { number: "04", title: "体积力作用", text: "在整个计算域中施加体积力，包括局部力和周期性外力。" },
     ],
     validation: {
       label: "03 / 解析解验证",
       title: "流体力学基准算例",
-      introduction: "通过典型流动、流体动力学相互作用及复杂运动边界等基准问题，将 SLIME 的计算结果与解析解进行比较，以验证求解方法。",
+      introduction: "通过经典的流动、流体动力学相互作用及复杂运动边界相关的基准问题，将 SLIME 的计算结果与解析解进行比较，以验证求解方法。",
       schematicCaption: "示意图 · 非模拟数据",
       schematicAria: "示意图，并非实际模拟数据",
     },
