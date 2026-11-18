@@ -21,6 +21,13 @@ Open http://localhost:3000.
 - `/projects/slime`
 - `/about`
 
+## Language selection
+
+The header offers **Language → English / 简体中文** on every page. The chosen
+language is saved in browser local storage and restored on later visits.
+The Chinese mode currently uses the same English text as the English mode;
+translations can be added later through `components/language-provider.tsx`.
+
 ## Editing
 
 - Change the placeholder name in `components/site-header.tsx`, `app/layout.tsx`, and `app/page.tsx`.

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function SiteHeader() {
   return (
@@ -7,6 +8,7 @@ export function SiteHeader() {
       <nav aria-label="Main navigation">
         <Link href="/projects">Projects</Link>
         <Link href="/about">About</Link>
+        <LanguageSwitcher />
       </nav>
     </header>
   );
