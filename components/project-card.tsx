@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { Project } from "../lib/projects";
 import { ProjectVisual } from "./visual";
 
-export function ProjectCard({ project, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index, vectorFieldCover = false }: { project: Project; index: number; vectorFieldCover?: boolean }) {
   return (
     <Link className="project-card" href={`/projects/${project.slug}`} style={{ "--accent": project.accent } as React.CSSProperties}>
-      <ProjectVisual kind={project.visual} />
+      <ProjectVisual kind={project.visual} vectorFieldCover={vectorFieldCover} />
       <div className="card-body">
         <div className="card-meta"><span>0{index + 1} / PROJECT</span><span>↗</span></div>
         <h3>{project.name}</h3>

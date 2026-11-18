@@ -2,7 +2,21 @@ import type { Project } from "../lib/projects";
 import Image from "next/image";
 import slimeCover from "../figures/SLIME/slime.png";
 
-export function ProjectVisual({ kind, large = false, alt }: { kind: Project["visual"]; large?: boolean; alt?: string }) {
+export function ProjectVisual({ kind, large = false, alt, vectorFieldCover = false }: { kind: Project["visual"]; large?: boolean; alt?: string; vectorFieldCover?: boolean }) {
+  if (kind === "plot" && vectorFieldCover) {
+    return (
+      <div className={`project-visual visual-plot ${large ? "visual-large" : ""}`}>
+        <Image
+          src="/images/eigenplot3d/vector-field-main.png"
+          alt={alt ?? "EigenPlot3D vector field visualization"}
+          fill
+          sizes={large ? "(max-width: 950px) 100vw, 50vw" : "(max-width: 650px) 100vw, 50vw"}
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority={large}
+        />
+      </div>
+    );
+  }
   if (kind === "flow") {
     return (
       <div className={`project-visual visual-flow ${large ? "visual-large" : ""}`}>

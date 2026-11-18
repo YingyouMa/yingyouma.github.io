@@ -7,7 +7,7 @@ export default function ProjectsPage() {
   return (
     <section className="section listing-page">
       <h1 className="page-title">Projects</h1>
-      <div className="project-grid">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
+      <div className="project-grid">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} vectorFieldCover={project.slug === "eigenplot3d"} />)}</div>
     </section>
   );
 }
