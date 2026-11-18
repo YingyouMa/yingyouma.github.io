@@ -1,6 +1,6 @@
 # Personal Website
 
-An initial professional website for three engineering software projects: **Nematics3D**, **EigenPlot3D**, and **SLIME**.
+A professional website for two engineering software projects: **EigenPlot3D** and **SLIME**.
 
 ## Run locally
 
@@ -17,7 +17,6 @@ Open http://localhost:3000.
 
 - `/` — landing page
 - `/projects` — project collection
-- `/projects/nematics3d`
 - `/projects/eigenplot3d`
 - `/projects/slime`
 - `/about`

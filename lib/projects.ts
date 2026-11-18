@@ -8,7 +8,7 @@ export type Project = {
   stack: string[];
   highlights: { title: string; body: string }[];
   accent: string;
-  visual: "nematics" | "plot" | "flow";
+  visual: "plot" | "flow";
 };
 
 export const projects: Project[] = [
@@ -29,25 +29,9 @@ export const projects: Project[] = [
     visual: "plot"
   },
   {
-    slug: "nematics3d",
-    name: "Nematics3D",
-    eyebrow: "02 / SCIENTIFIC DATA ANALYSIS",
-    tagline: "Analysis of 3D nematic data.",
-    summary: "Tools for analyzing and visualizing 3D nematic data.",
-    description: "Nematics3D provides tools for processing, analyzing, and visualizing three-dimensional liquid-crystal simulation data.",
-    stack: ["Python", "3D Data Analysis", "Liquid Crystals", "Scientific Visualization"],
-    highlights: [
-      { title: "Data processing", body: "Process volumetric nematic field data." },
-      { title: "Geometric analysis", body: "Examine 3D structures and defects." },
-      { title: "Visualization", body: "Visualize simulation results." }
-    ],
-    accent: "#b7a1ff",
-    visual: "nematics"
-  },
-  {
     slug: "slime",
     name: "SLIME",
-    eyebrow: "03 / NUMERICAL METHODS & HPC",
+    eyebrow: "02 / NUMERICAL METHODS & HPC",
     tagline: "Simulating fluid flow around complex and moving objects.",
     summary: "A GPU-powered tool for simulating how viscous fluids flow around objects with complex shapes and moving boundaries.",
     description: "SLIME combines lattice Boltzmann boundary treatment with GPU-accelerated multigrid to compute steady Stokes flows.",

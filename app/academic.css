@@ -20,7 +20,7 @@ body{background:var(--bg);color:var(--text)}
 .section{padding-top:85px;padding-bottom:85px}
 .section-heading h2,.closing-section h2,.detail-content h2{letter-spacing:-.035em;font-weight:600}
 .section-heading h2{font-size:clamp(28px,3vw,40px)}
-.project-grid{gap:18px}
+.project-grid{gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
 .project-card{background:#fff;border:1px solid var(--line);transition:border-color .15s,box-shadow .15s}
 .project-card:hover{transform:none;border-color:#a9bccd;box-shadow:0 6px 22px #233b5410}
 .project-visual{height:205px}
@@ -53,3 +53,4 @@ body{background:var(--bg);color:var(--text)}
 .validation-panel .data-note{color:#74808c!important}
 .about-layout p{color:#566473}
 @media(max-width:650px){.hero{min-height:auto;padding:80px 24px}.hero h1{font-size:clamp(40px,10vw,54px)}.site-header{height:70px}.section{padding:65px 24px}.detail-header h1{font-size:clamp(44px,12vw,72px)}.detail-intro,.detail-highlights,.validation-panel{padding:52px 0}}
+@media(max-width:650px){.project-grid{grid-template-columns:1fr}}
