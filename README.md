@@ -19,18 +19,21 @@ Open http://localhost:3000.
 - `/projects` — project collection
 - `/projects/eigenplot3d`
 - `/projects/slime`
+- `/projects/slime/methods`
 - `/about`
 
 ## Language selection
 
 The header offers **Language → English / 简体中文** on every page. The chosen
 language is saved in browser local storage and restored on later visits.
-The SLIME overview page has a complete Simplified Chinese translation, including
-its section navigation. SLIME's name, full English name, and figures are unchanged.
-The separate SLIME numerical-methods page and other project pages still use their
-original English body text. Shared navigation and footer labels are translated.
-Translations for the SLIME overview live in `lib/slime-home-copy.ts`; language
-selection state lives in `components/language-provider.tsx`.
+Both the SLIME overview and numerical-methods pages have Simplified Chinese
+translations, including section navigation and figure viewer controls. SLIME's
+name, full English name, and all figures remain unchanged. The other project
+pages still display their original English body text. Shared navigation and
+footer labels are translated.
+SLIME translations live in `lib/slime-home-copy.ts` and
+`lib/slime-methods-copy.ts`; language selection state is managed by
+`components/language-provider.tsx`.
 
 ## Editing
 

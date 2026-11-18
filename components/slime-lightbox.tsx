@@ -5,8 +5,25 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type Figure = { src: StaticImageData; alt: string; title: string };
+type LightboxLabels = {
+  enlarge: string;
+  viewer: string;
+  close: string;
+  previous: string;
+  next: string;
+  hint: string;
+};
 
-export function SlimeLightbox({ figures }: { figures: Figure[] }) {
+const englishLabels: LightboxLabels = {
+  enlarge: "Enlarge figure:",
+  viewer: "Technical figure viewer",
+  close: "Close image viewer",
+  previous: "Previous figure",
+  next: "Next figure",
+  hint: "← → to navigate · Esc to close",
+};
+
+export function SlimeLightbox({ figures, labels = englishLabels }: { figures: Figure[]; labels?: LightboxLabels }) {
   const [active, setActive] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -20,7 +37,7 @@ export function SlimeLightbox({ figures }: { figures: Figure[] }) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "slime-lightbox-trigger";
-      button.setAttribute("aria-label", `Enlarge figure: ${figures[index].title}`);
+      button.setAttribute("aria-label", `${labels.enlarge} ${figures[index].title}`);
       while (figure.firstChild) button.appendChild(figure.firstChild);
       figure.appendChild(button);
       const open = () => { previousFocus.current = button; setActive(index); };
@@ -28,7 +45,7 @@ export function SlimeLightbox({ figures }: { figures: Figure[] }) {
       return () => { button.removeEventListener("click", open); while (button.firstChild) figure.appendChild(button.firstChild); button.remove(); };
     });
     return () => cleanups.forEach(cleanup => cleanup());
-  }, [figures]);
+  }, [figures, labels.enlarge]);
 
   const isOpen = active !== null;
   useEffect(() => {
@@ -55,10 +72,10 @@ export function SlimeLightbox({ figures }: { figures: Figure[] }) {
   if (active === null || typeof document === "undefined") return null;
   const figure = figures[active];
   return createPortal(<div className="slime-lightbox-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setActive(null); }}>
-    <div className="slime-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Technical figure viewer">
-      <div className="slime-lightbox-top"><span>{String(active + 1).padStart(2, "0")} / {String(figures.length).padStart(2, "0")}</span><button ref={closeRef} type="button" onClick={() => setActive(null)} aria-label="Close image viewer">✕</button></div>
-      <div className="slime-lightbox-stage"><button type="button" aria-label="Previous figure" onClick={() => setActive((active - 1 + figures.length) % figures.length)}>‹</button><Image src={figure.src} alt={figure.alt} sizes="95vw" priority /><button type="button" aria-label="Next figure" onClick={() => setActive((active + 1) % figures.length)}>›</button></div>
-      <div className="slime-lightbox-caption">{figure.title}<span>← → to navigate · Esc to close</span></div>
+    <div className="slime-lightbox-dialog" role="dialog" aria-modal="true" aria-label={labels.viewer}>
+      <div className="slime-lightbox-top"><span>{String(active + 1).padStart(2, "0")} / {String(figures.length).padStart(2, "0")}</span><button ref={closeRef} type="button" onClick={() => setActive(null)} aria-label={labels.close}>✕</button></div>
+      <div className="slime-lightbox-stage"><button type="button" aria-label={labels.previous} onClick={() => setActive((active - 1 + figures.length) % figures.length)}>‹</button><Image src={figure.src} alt={figure.alt} sizes="95vw" priority /><button type="button" aria-label={labels.next} onClick={() => setActive((active + 1) % figures.length)}>›</button></div>
+      <div className="slime-lightbox-caption">{figure.title}<span>{labels.hint}</span></div>
     </div>
   </div>, document.body);
 }
