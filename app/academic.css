@@ -28,7 +28,7 @@ body{background:var(--bg);color:var(--text)}
 .eyebrow{color:#61778b;letter-spacing:.075em;font-size:11px;font-weight:600}
 .hero h1{font-size:clamp(42px,5.2vw,72px);letter-spacing:-.045em;font-weight:600;line-height:1.14;margin:23px 0}
 .hero h1 em,.about-page h1 em{color:#315d86}
-.hero-lede{color:#526171;font-size:17px;line-height:1.75;max-width:610px}
+.hero-lede{color:#526171;font-size:clamp(21px,1.9vw,26px);line-height:1.65;max-width:700px}
 .hero-actions{margin-top:30px;gap:28px}
 .button-primary{background:#315d86;color:white;border-radius:5px;padding:13px 19px;font-weight:550;gap:22px;transition:background .15s}
 .button-primary:hover{transform:none;background:#24496b}
