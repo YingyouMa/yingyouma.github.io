@@ -19,13 +19,19 @@ const chineseCopy: Record<string, ProjectListingTranslation> = {
   },
 };
 
-export function ProjectsListing() {
+export function ProjectsListing({ home = false }: { home?: boolean }) {
   const { language } = useLanguage();
   const zh = language === "zh-CN";
 
   return (
-    <section className="section listing-page">
-      <h1 className="page-title">{zh ? "项目" : "Projects"}</h1>
+    <section className={home ? "section projects-section project-listing" : "section listing-page project-listing"} id={home ? "projects" : undefined}>
+      {home ? (
+        <div className="section-heading">
+          <h2>{zh ? "项目" : "Projects"}</h2>
+        </div>
+      ) : (
+        <h1 className="page-title">{zh ? "项目" : "Projects"}</h1>
+      )}
       <div className="project-grid">
         {projects.map((project, index) => {
           const copy = zh ? chineseCopy[project.slug] : undefined;

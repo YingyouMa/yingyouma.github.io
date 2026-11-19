@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { ProjectCard } from "../components/project-card";
-import { projects } from "../lib/projects";
+import { ProjectsListing } from "../components/projects-listing";
 
 export default function Home() {
   return (
@@ -15,12 +14,7 @@ export default function Home() {
         </div>
         
       </section>
-      <section className="section projects-section" id="projects">
-        <div className="section-heading">
-          <h2>Projects</h2>
-        </div>
-        <div className="project-grid">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
-      </section>
+      <ProjectsListing home />
     </>
   );
 }
