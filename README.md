@@ -29,9 +29,9 @@ language is saved in browser local storage and restored on later visits.
 Both SLIME pages and the EigenPlot3D project detail page have Simplified Chinese
 translations, including section navigation, diagram labels, figure captions,
 and image viewer controls. Project names, code API identifiers, and source
-figures remain unchanged. The homepage Projects cards and the dedicated
-Projects listing share bilingual summaries, tags, images, and typography.
-The other site pages still display their original English body text.
+figures remain unchanged. The homepage hero and Projects cards are bilingual,
+and the dedicated Projects listing shares bilingual summaries, tags, images,
+and typography. The About page still displays its original English body text.
 Shared navigation and footer labels are translated.
 SLIME translations live in `lib/slime-home-copy.ts` and
 `lib/slime-methods-copy.ts`; language selection state is managed by
