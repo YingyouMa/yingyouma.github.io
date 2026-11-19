@@ -31,12 +31,14 @@ translations, including section navigation, diagram labels, figure captions,
 and image viewer controls. Project names, code API identifiers, and source
 figures remain unchanged. The homepage hero and Projects cards are bilingual,
 and the dedicated Projects listing shares bilingual summaries, tags, images,
-and typography. The About page still displays its original English body text.
+and typography. The About page now provides a bilingual personal introduction,
+including soft matter dynamics and topological defect research.
 Shared navigation and footer labels are translated.
 SLIME translations live in `lib/slime-home-copy.ts` and
 `lib/slime-methods-copy.ts`; language selection state is managed by
 `components/language-provider.tsx`.
 EigenPlot3D translations live in `lib/eigenplot-copy.ts`.
+About page translations live in `lib/about-copy.ts`.
 
 ## Editing
 
