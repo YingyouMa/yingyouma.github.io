@@ -13,7 +13,7 @@ const chineseCopy: Record<string, ProjectListingTranslation> = {
     imageAlt: "EigenPlot3D 三维矢量场可视化效果图",
   },
   slime: {
-    summary: "GPU 加速的三维黏性流动模拟工具，擅长处理复杂几何体和运动边界。",
+    summary: "GPU 加速的三维粘性流动数值模拟求解器，擅长处理复杂几何体和运动边界。",
     stack: ["C++", "CUDA", "格子玻尔兹曼方法（LBM）", "多重网格", "GPU 计算"],
     imageAlt: "SLIME 流体模拟封面图",
   },
