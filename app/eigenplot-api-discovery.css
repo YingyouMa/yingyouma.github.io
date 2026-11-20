@@ -1,0 +1,187 @@
+/* Chapter 05: compact API overview that follows the workflow typography. */
+.eigen-page .eigen-api-discovery-section > h2 {
+  margin: 14px 0 28px;
+}
+
+.eigen-page .eigen-api-discovery-lede {
+  max-width: 1050px;
+  margin: 0 0 44px;
+  font-size: var(--eigen-body-size, clamp(19px, 1.7vw, 24px));
+  line-height: 1.7;
+  color: #34495e;
+}
+
+.eigen-page .eigen-api-discovery-lede code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e9f0f5;
+  color: #315d86;
+  font-size: .87em;
+  white-space: nowrap;
+}
+
+.eigen-page .eigen-api-prefixes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding: 28px 0;
+  margin-bottom: 64px;
+  border-top: 1px solid #c3cfd9;
+  border-bottom: 1px solid #c3cfd9;
+}
+
+.eigen-page .eigen-api-prefix {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.eigen-page .eigen-api-prefix > code {
+  min-width: 125px;
+  color: #315d86;
+  font-size: clamp(25px, 2.4vw, 34px);
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.eigen-page .eigen-api-prefix strong {
+  display: block;
+  margin: 3px 0 7px;
+  font-size: clamp(19px, 1.6vw, 23px);
+  color: #263442;
+}
+
+.eigen-page .eigen-api-prefix p {
+  margin: 0;
+  color: #536477;
+  line-height: 1.65;
+  font-size: clamp(16px, 1.25vw, 18px);
+}
+
+.eigen-page .eigen-api-inspection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.eigen-page .eigen-api-inspection-intro {
+  min-width: 0;
+}
+
+.eigen-page .eigen-api-inspection-intro h3 {
+  margin: 0 0 20px;
+  font-size: clamp(30px, 3.1vw, 45px);
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  color: #263442;
+}
+
+.eigen-page .eigen-api-inspection-intro > p {
+  margin: 0 0 28px;
+  font-size: clamp(18px, 1.48vw, 21px);
+  line-height: 1.7;
+  color: #43576a;
+}
+
+.eigen-page .eigen-api-code {
+  min-width: 0;
+  overflow: hidden;
+  padding: 24px;
+  background: #142333;
+  border: 1px solid #35495c;
+  border-radius: 10px;
+  color: #dbe8f0;
+}
+
+.eigen-page .eigen-api-code-label {
+  color: #f0b687;
+  font-size: 12px;
+  letter-spacing: .11em;
+  font-weight: 800;
+}
+
+.eigen-page .eigen-api-code pre {
+  margin: 19px 0 0;
+  overflow-x: auto;
+  line-height: 1.75;
+  font-size: clamp(13px, 1.12vw, 16px);
+  tab-size: 2;
+}
+
+.eigen-page .eigen-api-code pre code {
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre;
+}
+
+.eigen-page .eigen-api-methods {
+  min-width: 0;
+}
+
+.eigen-page .eigen-api-methods h4 {
+  margin: 4px 0 12px;
+  color: #a65c32;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+
+.eigen-page .eigen-api-method {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d7e0e7;
+}
+
+.eigen-page .eigen-api-method:first-of-type {
+  border-top: 1px solid #d7e0e7;
+}
+
+.eigen-page .eigen-api-method code {
+  color: #315d86;
+  font-size: clamp(15px, 1.22vw, 18px);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.eigen-page .eigen-api-method span {
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.55;
+  color: #536477;
+}
+
+@media (max-width: 920px) {
+  .eigen-page .eigen-api-inspection {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .eigen-page .eigen-api-prefixes {
+    gap: 24px;
+    margin-bottom: 45px;
+  }
+  .eigen-page .eigen-api-prefix {
+    flex-direction: column;
+    gap: 9px;
+  }
+}
+
+@media (max-width: 620px) {
+  .eigen-page .eigen-api-prefixes {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 22px 0;
+  }
+  .eigen-page .eigen-api-prefix {
+    flex-direction: row;
+    gap: 19px;
+  }
+  .eigen-page .eigen-api-prefix > code {
+    min-width: 95px;
+    font-size: 25px;
+  }
+  .eigen-page .eigen-api-code {
+    padding: 18px;
+  }
+}

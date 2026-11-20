@@ -4,6 +4,8 @@ import Link from "next/link";
 import { EigenplotScrollProgress } from "./eigenplot-scroll-progress";
 import { EigenplotLightbox } from "./eigenplot-lightbox";
 import { EigenplotViewportEffects } from "./eigenplot-viewport-effects";
+import { EigenplotGallery, eigenplotGalleryCases } from "./eigenplot-gallery";
+import { EigenplotApiDiscovery } from "./eigenplot-api-discovery";
 import { useLanguage } from "./language-provider";
 import { eigenplotChinese } from "../lib/eigenplot-copy";
 import "../app/eigenplot.css";
@@ -34,9 +36,10 @@ export function EigenplotShowcase() {
     <EigenplotViewportEffects />
     <EigenplotLightbox images={[
       { src: "/images/eigenplot3d/vector-field-main.png", alt: t("Three-dimensional vortex vector field sampled on a two-dimensional plane, rendered with EigenPlot3D") },
-      { src: "/images/eigenplot3d/UI.png", alt: t("Vector field rendered using EigenPlot3D from supplied coordinates, orientations, and RGB colors") },
+      { src: "/images/eigenplot3d/main.png", alt: t("Vector field rendered using EigenPlot3D from supplied coordinates, orientations, and RGB colors") },
       { src: "/images/eigenplot3d/pick.png", alt: t("EigenPlot3D glyph picking with numbered markers and object information") },
-      { src: "/images/eigenplot3d/highlight.png", alt: t("EigenPlot3D highlighting all glyphs of a selected plot object with black outlines") },
+      { src: "/images/eigenplot3d/highlight.png", alt: t("Only the vectors inside the reference ring are highlighted; surrounding vectors, the ring, and markers remain unhighlighted") },
+      ...eigenplotGalleryCases.map(item => ({ src: item.image, alt: zh ? item.titleZh : item.title })),
     ]} />
     <Link href="/projects" className="back-link">← {t("All projects")}</Link>
     <header className="eigen-hero">
@@ -49,7 +52,7 @@ export function EigenplotShowcase() {
         <a className="eigen-hero-link" href="#eigen-concept">{t("Explore the design")} <span>↓</span></a>
       </div>
       <div className="eigen-hero-visual eigen-vector-visual" aria-label={t("Real EigenPlot3D vector-field rendering with geometry, options, and controls annotations")}>
-        <div className="eigen-vector-top"><span>{t("ONE OBJECT · THREE LAYERS")}</span><strong>PlotVector ↗</strong></div>
+        <div className="eigen-vector-top"><span>{t("ONE OBJECT · THREE LAYERS")}</span></div>
         <div className="eigen-vector-frame">
           <img data-eigen-lightbox src="/images/eigenplot3d/vector-field-main.png" alt={t("Three-dimensional vortex vector field sampled on a two-dimensional plane, rendered with EigenPlot3D")} />
           <div className="eigen-vector-callout eigen-vector-geometry"><small>{t("01 / GEOMETRY")}</small><strong>{t("Coordinates + orientation")}</strong><span>{t("What to draw")}</span></div>
@@ -60,9 +63,16 @@ export function EigenplotShowcase() {
       </div>
     </header>
 
+    <section className="eigen-public-demo" aria-label={zh ? "EigenPlot3D 介绍视频" : "EigenPlot3D introduction video"}>
+      <video className="eigen-public-demo-video" muted loop playsInline controls preload="none" poster="/images/eigenplot3d/cover.png" aria-label={zh ? "EigenPlot3D 演示视频" : "EigenPlot3D demonstration video"}>
+        <source src="/images/eigenplot3d/public.mp4" type="video/mp4" />
+        {t("Your browser does not support HTML5 video.")}
+      </video>
+    </section>
+
     <section id="eigen-concept" className="eigen-section eigen-intro">
       <p className="eyebrow">{t("01 / THE IDEA")}</p>
-      <div className="eigen-two-column"><div className="eigen-intro-heading"><h2>{t("Built on PyVista.")}<br /><em>{t("Designed for a better workflow.")}</em></h2><p className="eigen-intro-goal">{t("Our goal is simple: once the scientific information is known, finding the right visualization should be ")}<strong>{t("fast")}</strong>{zh ? "、" : ", "}<strong>{t("intuitive")}</strong>{zh ? "且" : ", and "}<strong>{t("reproducible")}</strong>{zh ? "的找到合适的可视化方式。" : "."}</p></div><div><p>{t("PyVista is a powerful Python library for scientific 3D visualization. So why build another layer on top of it?")}</p><p>{t("Because creating a figure is only ")}<strong>{t("half the challenge")}</strong>{t(". Finding the right visualization settings can be tedious. PyVista has a relatively steep learning curve, and refining a figure often involves repeatedly modifying code and rerunning the visualization just to see whether the changes work.")}</p><p><strong>{t("EigenPlot3D is designed to simplify this process.")}</strong></p><p>{t("By combining a highly object-oriented interface with built-in interactive controls, EigenPlot3D allows users to adjust visualization parameters directly, without repeatedly editing and rerunning their code. Once satisfied, users can easily inspect, save, and reuse their settings.")}</p></div></div>
+      <div className="eigen-two-column"><div className="eigen-intro-heading"><h2>{t("Built on PyVista.")}<br /><em>{t("Designed for a better workflow.")}</em></h2><p className="eigen-intro-goal">{zh ? <>{t("Our goal is simple: once the scientific information is known, finding the right visualization should be ")}<strong>{t("fast")}</strong>、<strong>{t("intuitive")}</strong>地找到合适的可视化方式，并保存设置以便复现结果。</> : <>{t("Our goal is simple: once the scientific information is known, finding the right visualization should be ")}<strong>{t("fast")}</strong>, <strong>{t("intuitive")}</strong>, and <strong>{t("reproducible")}</strong>.</>}</p></div><div><p>{t("PyVista is a powerful Python library for scientific 3D visualization. So why build another layer on top of it?")}</p><p>{t("Because creating a figure is only ")}<strong>{t("half the challenge")}</strong>{t(". Finding the right visualization settings can be tedious. PyVista has a relatively steep learning curve, and refining a figure often involves repeatedly modifying code and rerunning the visualization just to see whether the changes work.")}</p><p><strong>{t("EigenPlot3D is designed to simplify this process.")}</strong></p><p>{t("By combining a highly object-oriented interface with built-in interactive controls, EigenPlot3D allows users to adjust visualization parameters directly, without repeatedly editing and rerunning their code. Once satisfied, users can easily inspect, save, and reuse their settings.")}</p></div></div>
     </section>
 
     <section className="eigen-section" id="eigen-principles">
@@ -83,7 +93,7 @@ arrows = PlotVector(
     color=colors,
 )
 
-`} /></code></pre></div><figure className="eigen-workflow-result"><img data-eigen-lightbox src="/images/eigenplot3d/UI.png" alt={t("Vector field rendered using EigenPlot3D from supplied coordinates, orientations, and RGB colors")}/><figcaption>{t("RESULT / EIGENPLOT3D RENDER")}</figcaption></figure></div>
+`} /></code></pre></div><figure className="eigen-workflow-result"><img data-eigen-lightbox src="/images/eigenplot3d/main.png" alt={t("Vector field rendered using EigenPlot3D from supplied coordinates, orientations, and RGB colors")}/><figcaption>{t("Actual EigenPlot3D Qt interface showing the result of the arrow-plotting code above.")}<span className="eigen-workflow-result-note">{t("The camera was moved closer after running the arrow-plotting code above for clearer presentation.")}</span></figcaption></figure></div>
       </div>
     </section>
 
@@ -96,7 +106,7 @@ arrows = PlotVector(
           <source src="/images/eigenplot3d/vectors.mp4" type="video/mp4" />
           {t("Your browser does not support HTML5 video.")}
         </video>
-        <figcaption>{t("Actual EigenPlot3D Qt interaction · Watch visualization settings update directly in the scene.")}<span className="eigen-pick-figure-note">{t("The camera was moved closer after running the arrow-plotting code above for clearer presentation.")}</span></figcaption>
+        <figcaption>{t("Actual EigenPlot3D Qt interaction · Watch visualization settings update directly in the scene.")}</figcaption>
       </figure>
       <div className="eigen-workflow-snapshots">
         <h3>{t("Experiment freely.")} <em>{t("Revert anytime.")}</em></h3>
@@ -161,9 +171,40 @@ other_arrows.act_commit(opts=arrows.opts)`} /></code></pre>
       </div>
     </section>
 
+    <section className="eigen-section eigen-advanced-section" id="eigen-advanced-interactivity">
+      <p className="eyebrow">{t("03 / INTERACTIVE PRESENTATION")}</p>
+      <h2>{t("More than a figure.")}<br /><em>{t("Make your science come alive.")}</em></h2>
+      <p className="eigen-workflow-intro">{t("EigenPlot3D is designed not only to help researchers find the right visualization settings and produce publication-ready figures, but also to make live scientific presentations more informative and intuitive. Through built-in interactions, presenters can highlight objects, mark specific locations, and reveal detailed information directly within the 3D scene—helping audiences better understand what they are looking at.")}</p>
+      <div className="eigen-advanced-pick" id="eigen-pick-inspect">
+        <p className="eigen-workflow-step-number">{t("3.1 / PICK, MARK & INSPECT")}</p>
+        <h2>{t("Pick a glyph.")}<br /><em>{t("See what it represents.")}</em></h2>
+        <p className="eigen-workflow-intro"><strong>{t("Double-left-click a glyph")}</strong>{t(" to place a numbered marker at the selected location. EigenPlot3D also reports information about the picked object, including its orientation, color, and geometric properties, so you can inspect the underlying visualization rather than just its appearance. Double-left-click near an existing marker to remove it.")}</p>
+        <figure className="eigen-advanced-pick-figure"><img data-eigen-lightbox src="/images/eigenplot3d/pick.png" alt={t("EigenPlot3D glyph picking with numbered markers and object information")} loading="lazy" /><figcaption>{t("Actual EigenPlot3D picking screenshot · Click to enlarge.")}<span className="eigen-pick-figure-note">{t("For clearer presentation on this webpage, the marker-related settings were adjusted from their defaults using EigenPlot3D's built-in public interface.")}</span></figcaption></figure>
+      </div>
+      <div className="eigen-advanced-pick" id="eigen-highlight">
+        <p className="eigen-workflow-step-number">{t("3.2 / HIGHLIGHT OBJECTS")}</p>
+        <h2>{t("Highlight one object.")}<br /><em>{t("Reveal all its glyphs.")}</em></h2>
+        <p className="eigen-workflow-intro"><strong>{t("Right-click a glyph")}</strong>{t(" to highlight every glyph belonging to the same plot object with a black outline. The console also displays the object's type and name, making it easy to identify which object is being presented. Right-click again to toggle the highlight off.")}</p>
+        <p className="eigen-workflow-intro">{t("To make the highlighting effect easier to see, we split the same vortex vector field into two separate PlotVector objects—one inside the reference ring and one outside—and added a thin ring and four spherical markers. In the screenshot, only the vectors inside the ring are highlighted; the outer vectors and other objects keep their original appearance.")}</p>
+        <figure className="eigen-advanced-pick-figure"><img data-eigen-lightbox src="/images/eigenplot3d/highlight.png" alt={t("Only the vectors inside the reference ring are highlighted; surrounding vectors, the ring, and markers remain unhighlighted")} loading="lazy" /><figcaption>{t("Actual EigenPlot3D highlighting screenshot · Click to enlarge.")}<span className="eigen-pick-figure-note">{t("For clearer presentation on this webpage, the silhouette outline thickness was adjusted from its default using EigenPlot3D's built-in public interface.")}</span></figcaption></figure>
+      </div>
+      <div className="eigen-advanced-pick" id="eigen-vector-plane">
+        <p className="eigen-workflow-step-number">{t("3.3 / INTERACTIVE FIELD SAMPLING")}</p>
+        <h2>{t("Move the plane.")}<br /><em>{t("See the field respond.")}</em></h2>
+        <p className="eigen-workflow-intro">{t("With ")}<code>VectorPlane</code>{t(", researchers can interactively adjust how a three-dimensional vector field is sampled and displayed. Changing the sampling plane and its grid settings updates the vector glyphs in the scene, making it easier to explore spatial structure and explain it during a live presentation.")}</p>
+        <figure className="eigen-advanced-pick-figure">
+          <video className="eigen-vector-plane-video" muted loop playsInline controls preload="none" poster="/images/eigenplot3d/plane-poster.jpg" width={1280} height={695} aria-label={t("Recording of interactive VectorPlane grid and plane adjustments in EigenPlot3D")}>
+            <source src="/images/eigenplot3d/plane.mp4" type="video/mp4" />
+            {t("Your browser does not support HTML5 video.")}
+          </video>
+          <figcaption>{t("Actual EigenPlot3D interaction · 25-second recording showing live adjustments to the sampling plane and grid.")}</figcaption>
+        </figure>
+      </div>
+    </section>
+    <EigenplotGallery />
+    <EigenplotApiDiscovery />
     <section className="eigen-section eigen-architecture-section" id="eigen-architecture">
-      <p className="eyebrow">{t("03 / ARCHITECTURE OVERVIEW")}</p>
-      <h2>{t("Your data.")}<br /><em>{t("Your visualization.")}</em></h2>
+      <p className="eyebrow">{t("06 / ARCHITECTURE OVERVIEW")}</p>
       <p className="eigen-architecture-lede">{t("EigenPlot3D is an ")}<strong>{t("object-oriented, highly parameterized 3D visualization package")}</strong>{t(" designed to help researchers efficiently find, refine, and reproduce visualization settings for their spatial data.")}</p>
       <div className="eigen-architecture-v2 eigen-architecture-diagram" role="img" aria-label={t("Architecture: external spatial data is supplied to EigenPlot3D plot objects. PlotFigure manages plot objects such as PlotVector. Visualization options are configured by the Python API, refined with Qt controls, and saved or loaded for reproducibility. PyVista and VTK provide the rendering backend.")}>
         <svg viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg">
@@ -216,35 +257,6 @@ other_arrows.act_commit(opts=arrows.opts)`} /></code></pre>
         <p><strong>{t("Spatial data is supplied externally.")}</strong>{t(" For example, a ")}<code>PlotVector</code>{t(" receives coordinates and orientations that determine where vectors are placed and how they are directed. EigenPlot3D focuses on how those vectors are visualized, with configurable ")}<strong><code>opts</code></strong>{t(" controlling properties such as color, length, radius, and opacity.")}</p>
         <p>{t("The ")}<strong>{t("Python API")}</strong>{t(" allows users to construct plot objects from their data and configure their visualization settings. ")}<strong>{t("Interactive Qt controls")}</strong>{t(" make it possible to explore and refine ")}<code>opts</code>{t(" directly, without repeatedly editing code or reconstructing the scene.")}</p>
         <p>{t("Once the desired appearance is achieved, ")}<strong>{t("opts can be inspected, saved, and reused")}</strong>{t(", allowing the same visualization settings to be applied to different datasets and making the results reproducible. Under the hood, EigenPlot3D encapsulates ")}<strong>PyVista / VTK</strong>{t(", providing a consistent high-level interface without exposing the underlying rendering complexity.")}</p>
-      </div>
-    </section>
-    <section className="eigen-section eigen-advanced-section" id="eigen-advanced-interactivity">
-      <p className="eyebrow">{t("04 / INTERACTIVE PRESENTATION")}</p>
-      <h2>{t("More than a figure.")}<br /><em>{t("Make your science come alive.")}</em></h2>
-      <p className="eigen-workflow-intro">{t("EigenPlot3D is designed not only to help researchers find the right visualization settings and produce publication-ready figures, but also to make live scientific presentations more informative and intuitive. Through built-in interactions, presenters can highlight objects, mark specific locations, and reveal detailed information directly within the 3D scene—helping audiences better understand what they are looking at.")}</p>
-      <div className="eigen-advanced-pick" id="eigen-pick-inspect">
-        <p className="eigen-workflow-step-number">{t("4.1 / PICK, MARK & INSPECT")}</p>
-        <h2>{t("Pick a glyph.")}<br /><em>{t("See what it represents.")}</em></h2>
-        <p className="eigen-workflow-intro"><strong>{t("Double-left-click a glyph")}</strong>{t(" to place a numbered marker at the selected location. EigenPlot3D also reports information about the picked object, including its orientation, color, and geometric properties, so you can inspect the underlying visualization rather than just its appearance. Double-left-click near an existing marker to remove it.")}</p>
-        <figure className="eigen-advanced-pick-figure"><img data-eigen-lightbox src="/images/eigenplot3d/pick.png" alt={t("EigenPlot3D glyph picking with numbered markers and object information")} loading="lazy" /><figcaption>{t("Actual EigenPlot3D picking screenshot · Click to enlarge.")}<span className="eigen-pick-figure-note">{t("For clearer presentation on this webpage, the marker-related settings were adjusted from their defaults using EigenPlot3D's built-in public interface.")}</span></figcaption></figure>
-      </div>
-      <div className="eigen-advanced-pick" id="eigen-highlight">
-        <p className="eigen-workflow-step-number">{t("4.2 / HIGHLIGHT OBJECTS")}</p>
-        <h2>{t("Highlight one object.")}<br /><em>{t("Reveal all its glyphs.")}</em></h2>
-        <p className="eigen-workflow-intro"><strong>{t("Right-click a glyph")}</strong>{t(" to highlight every glyph belonging to the same plot object with a black outline. The console also displays the object's type and name, making it easy to identify which object is being presented. Right-click again to toggle the highlight off.")}</p>
-        <figure className="eigen-advanced-pick-figure"><img data-eigen-lightbox src="/images/eigenplot3d/highlight.png" alt={t("EigenPlot3D highlighting all glyphs of a selected plot object with black outlines")} loading="lazy" /><figcaption>{t("Actual EigenPlot3D highlighting screenshot · Click to enlarge.")}<span className="eigen-pick-figure-note">{t("For clearer presentation on this webpage, the silhouette outline thickness was adjusted from its default using EigenPlot3D's built-in public interface.")}</span></figcaption></figure>
-      </div>
-      <div className="eigen-advanced-pick" id="eigen-vector-plane">
-        <p className="eigen-workflow-step-number">{t("4.3 / INTERACTIVE FIELD SAMPLING")}</p>
-        <h2>{t("Move the plane.")}<br /><em>{t("See the field respond.")}</em></h2>
-        <p className="eigen-workflow-intro">{t("With ")}<code>VectorPlane</code>{t(", researchers can interactively adjust how a three-dimensional vector field is sampled and displayed. Changing the sampling plane and its grid settings updates the vector glyphs in the scene, making it easier to explore spatial structure and explain it during a live presentation.")}</p>
-        <figure className="eigen-advanced-pick-figure">
-          <video className="eigen-vector-plane-video" muted loop playsInline controls preload="none" poster="/images/eigenplot3d/plane-poster.jpg" width={1280} height={695} aria-label={t("Recording of interactive VectorPlane grid and plane adjustments in EigenPlot3D")}>
-            <source src="/images/eigenplot3d/plane.mp4" type="video/mp4" />
-            {t("Your browser does not support HTML5 video.")}
-          </video>
-          <figcaption>{t("Actual EigenPlot3D interaction · 25-second recording showing live adjustments to the sampling plane and grid.")}</figcaption>
-        </figure>
       </div>
     </section>
     <div className="eigen-footer"><Link href="/projects">← {t("All projects")}</Link></div>

@@ -26,7 +26,7 @@ export function EigenplotViewportEffects() {
       page.classList.add("eigen-reveal-ready");
     }
 
-    const videos = Array.from(page.querySelectorAll<HTMLVideoElement>("video.eigen-vector-plane-video"));
+    const videos = Array.from(page.querySelectorAll<HTMLVideoElement>("video.eigen-vector-plane-video, video.eigen-public-demo-video"));
     const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         const video = entry.target as HTMLVideoElement;

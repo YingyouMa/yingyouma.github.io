@@ -7,11 +7,11 @@ export function ProjectVisual({ kind, large = false, alt, vectorFieldCover = fal
     return (
       <div className={`project-visual visual-plot ${large ? "visual-large" : ""}`}>
         <Image
-          src="/images/eigenplot3d/vector-field-main.png"
-          alt={alt ?? "EigenPlot3D vector field visualization"}
+          src="/images/eigenplot3d/cover.png"
+          alt={alt ?? "EigenPlot3D project cover"}
           fill
           sizes={large ? "(max-width: 950px) 100vw, 50vw" : "(max-width: 650px) 100vw, 50vw"}
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{ objectFit: "contain", objectPosition: "center" }}
           priority={large}
         />
       </div>

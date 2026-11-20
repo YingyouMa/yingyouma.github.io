@@ -1,0 +1,23 @@
+/* Geometry Gallery: same neutral, editorial visual language as the project. */
+.eigen-page .eigen-gallery-section h2{margin:16px 0 18px}
+.eigen-page .eigen-gallery-intro{font-size:clamp(18px,1.55vw,22px);line-height:1.7;color:#43566a;max-width:1030px;margin:0 0 36px}
+.eigen-page .eigen-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;align-items:stretch}
+.eigen-page .eigen-gallery-card{background:#fff;border:1px solid #cbd6df;border-radius:14px;min-width:0;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 26px rgba(27,54,73,.045)}
+.eigen-page .eigen-gallery-card figure{margin:0;background:#f6f8fb;position:relative}
+.eigen-page .eigen-gallery-card img{display:block;width:100%;height:auto;aspect-ratio:900/560;object-fit:contain;cursor:zoom-in}
+.eigen-page .eigen-gallery-card figcaption{position:absolute;left:17px;top:16px;padding:6px 9px;border-radius:5px;background:rgba(255,255,255,.91);color:#4b6376;font-size:12px;font-weight:750;letter-spacing:.03em}
+.eigen-page .eigen-gallery-card-body{display:flex;flex-direction:column;flex:1;padding:24px 26px 26px}
+.eigen-page .eigen-gallery-card h3{color:#263442;font-size:clamp(21px,2vw,27px);letter-spacing:-.03em;margin:0 0 10px;line-height:1.25}
+.eigen-page .eigen-gallery-card-body>p{color:#536477;font-size:16px;line-height:1.65;margin:0 0 14px}
+.eigen-page .eigen-gallery-card-body>.eigen-gallery-geometry{border-top:1px solid #e3e9ed;padding-top:14px;margin:2px 0 22px;color:#41566c;font-size:15px}
+.eigen-page .eigen-gallery-geometry .eigen-gallery-geometry-heading{display:block;font-size:12px;letter-spacing:.09em;color:#a65c32;margin-bottom:7px}
+.eigen-page .eigen-gallery-input{line-height:1.8}
+.eigen-page .eigen-gallery-geometry b{font-weight:800;color:#263442}
+.eigen-page .eigen-gallery-card details{margin-top:auto;border:1px solid #ccd9e2;border-radius:8px;overflow:hidden}
+.eigen-page .eigen-gallery-card summary{cursor:pointer;color:#315d86;padding:12px 15px;font-size:14px;font-weight:700;list-style-position:inside}
+.eigen-page .eigen-gallery-card details[open] summary{background:#f1f5f8;border-bottom:1px solid #ccd9e2}
+.eigen-page .eigen-gallery-card pre{margin:0;padding:17px 18px;background:#152435;color:#dbe8f0;font-size:clamp(13px,1.05vw,15px);line-height:1.65;overflow-x:auto;tab-size:2}
+.eigen-page .eigen-gallery-card code{font-family:Consolas,"Courier New",monospace}
+.eigen-page .eigen-gallery-footnote{margin:24px 0 0;color:#66798a;font-size:14px;line-height:1.65}
+@media(max-width:920px){.eigen-page .eigen-gallery-grid{gap:18px}.eigen-page .eigen-gallery-card-body{padding:20px}}
+@media(max-width:720px){.eigen-page .eigen-gallery-grid{grid-template-columns:1fr}.eigen-page .eigen-gallery-card-body{padding:21px 22px}.eigen-page .eigen-gallery-intro{margin-bottom:26px}}

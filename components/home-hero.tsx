@@ -20,7 +20,7 @@ export function HomeHero() {
         </h1>
         <p className="hero-lede">
           {zh
-            ? "我从事数值方法、科学数据分析和三维可视化软件的研究与开发。"
+            ? "我的工作主要涉及数值算法、科学数据分析和三维可视化软件开发。"
             : "I work on numerical methods, scientific data analysis, and 3D visualization software."}
         </p>
         <div className="hero-actions">

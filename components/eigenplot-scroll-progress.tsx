@@ -9,11 +9,13 @@ const englishSections = [
   { id: "eigen-interactive-refinement", label: "Interactive refinement", number: "2.2", sub: true },
   { id: "eigen-inspect-options", label: "Inspect options", number: "2.3", sub: true },
   { id: "eigen-reuse-options", label: "Save & reuse", number: "2.4", sub: true },
-  { id: "eigen-architecture", label: "Architecture", number: "03" },
-  { id: "eigen-advanced-interactivity", label: "Interactive presentation", number: "04" },
-  { id: "eigen-pick-inspect", label: "Pick & inspect", number: "4.1", sub: true },
-  { id: "eigen-highlight", label: "Highlight objects", number: "4.2", sub: true },
-  { id: "eigen-vector-plane", label: "Field sampling", number: "4.3", sub: true },
+  { id: "eigen-advanced-interactivity", label: "Interactive presentation", number: "03" },
+  { id: "eigen-pick-inspect", label: "Pick & inspect", number: "3.1", sub: true },
+  { id: "eigen-highlight", label: "Highlight objects", number: "3.2", sub: true },
+  { id: "eigen-vector-plane", label: "Field sampling", number: "3.3", sub: true },
+  { id: "eigen-gallery", label: "Gallery", number: "04" },
+  { id: "eigen-api-discovery", label: "Discoverable API", number: "05" },
+  { id: "eigen-architecture", label: "Architecture", number: "06" },
 ];
 
 const chineseSections: typeof englishSections = [
@@ -22,11 +24,13 @@ const chineseSections: typeof englishSections = [
   { id: "eigen-interactive-refinement", label: "交互式调整", number: "2.2", sub: true },
   { id: "eigen-inspect-options", label: "查看参数", number: "2.3", sub: true },
   { id: "eigen-reuse-options", label: "保存与复用", number: "2.4", sub: true },
-  { id: "eigen-architecture", label: "架构概览", number: "03" },
-  { id: "eigen-advanced-interactivity", label: "交互式展示", number: "04" },
-  { id: "eigen-pick-inspect", label: "选取与查看", number: "4.1", sub: true },
-  { id: "eigen-highlight", label: "高亮对象", number: "4.2", sub: true },
-  { id: "eigen-vector-plane", label: "矢量场采样", number: "4.3", sub: true },
+  { id: "eigen-advanced-interactivity", label: "交互式展示", number: "03" },
+  { id: "eigen-pick-inspect", label: "选取与查看", number: "3.1", sub: true },
+  { id: "eigen-highlight", label: "高亮对象", number: "3.2", sub: true },
+  { id: "eigen-vector-plane", label: "矢量场采样", number: "3.3", sub: true },
+  { id: "eigen-gallery", label: "几何图形展示", number: "04" },
+  { id: "eigen-api-discovery", label: "易于发现的 API", number: "05" },
+  { id: "eigen-architecture", label: "架构概览", number: "06" },
 ];
 
 export function EigenplotScrollProgress() {

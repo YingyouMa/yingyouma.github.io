@@ -74,6 +74,10 @@ body{background:var(--bg);color:var(--text)}
 .metric-grid span{color:#586b7c}
 .validation-panel .data-note{color:#74808c!important}
 .about-layout p{color:#566473}
+.about-page > .eyebrow{font-size:18px}
+.about-cover{display:block;width:100%;max-width:520px;height:auto;margin-top:30px}
+.about-page .tag-row span{font-size:16px;line-height:1.4;padding:9px 13px}
+@media(max-width:650px){.about-cover{max-width:420px;margin-top:22px;margin-bottom:30px}}
 @media(max-width:650px){.hero{min-height:auto;padding:80px 24px}.hero h1{font-size:clamp(40px,10vw,54px)}.site-header{height:70px}.section{padding:65px 24px}.detail-header h1{font-size:clamp(44px,12vw,72px)}.detail-intro,.detail-highlights,.validation-panel{padding:52px 0}}
 @media(max-width:650px){.project-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.site-header{padding:0 16px;gap:8px}.wordmark{font-size:13px}.site-header nav{gap:clamp(9px,3vw,18px);font-size:12px}.language-switcher summary{gap:4px;font-size:12px}.language-switcher summary svg{width:13px;height:13px}.language-current{display:none}.language-menu{top:calc(100% + 14px)}}
